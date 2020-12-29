@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="92" height="75" viewBox="0 0 92 75">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="Rectangle_1639" fill="none" d="M0 0H92V75H0z" transform="translate(.392)"/>
+        </clipPath>
+        <style>
+            .cls-3{fill:#6c63ff}
+        </style>
+    </defs>
+    <g id="Group_1" transform="translate(-8.392)">
+        <g id="Group_70" clip-path="url(#clip-path)" transform="translate(8)">
+            <path id="Path_146" d="M.648 20.259L42.151.116a1.149 1.149 0 0 1 1.006 0L84.4 20.287a1.15 1.15 0 0 1 .027 2.052l-2.662 1.39a.688.688 0 0 0-.37.611v20.067a1.149 1.149 0 0 1-1.149 1.149h-2.857a1.149 1.149 0 0 1-1.149-1.149v-16.75a.688.688 0 0 0-.988-.62L42.994 42.676a1.146 1.146 0 0 1-1.008 0L.642 22.325a1.15 1.15 0 0 1 .006-2.066" class="cls-3"/>
+            <path id="Path_147" d="M127.741 136.685l-18.565-9.275a.848.848 0 0 1-.006-1.519l22.679-11.375a.846.846 0 0 1 .751 0l18.419 9.07a.848.848 0 0 1 .015 1.516L128.5 136.678a.846.846 0 0 1-.761.007" class="cls-3" transform="translate(-58.71 -61.772)"/>
+            <path id="Path_148" d="M57.533 107.577l-26.878-13.22a.875.875 0 0 1-.516-.8V77.081a.875.875 0 0 1 1.261-.786l26.878 13.17a.876.876 0 0 1 .49.786v16.527a.875.875 0 0 1-1.234.8" class="cls-3" transform="translate(-16.278 -41.138)"/>
+        </g>
+    </g>
+</svg>
