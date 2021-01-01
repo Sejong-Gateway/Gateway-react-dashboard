@@ -18,7 +18,7 @@ const ButtonStyle = styled.div `
             background : #6c63ff;
             color: white;
         ` : css `
-            background: white;
+            background:  #f8f8f8;
             color: #6c63ff;
             border: 0.0625rem solid #6c63ff;
         `

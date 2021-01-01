@@ -42,7 +42,7 @@ const UserListPage = (props) =>{
             <div className = "container">
             <div className="header">
                 <div>
-                <h1>유저관리</h1>
+                <h1>사용자 관리</h1>
                 <SearchBar text = "학번"/>
                 </div>
                 <Button
