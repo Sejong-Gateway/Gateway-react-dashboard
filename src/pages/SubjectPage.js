@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideBar from '../components/SideBar';
+import SideBar from '../components/Sidebar';
 import SearchBar from '../components/SearchBar';
 import Button from '../components/Button';
 import DropDownBox from '../components/DropDownBox';
@@ -26,7 +26,7 @@ const SubjectStyle = styled.div `
         &>div{
             display: flex;
             h1{
-            margin-right: 50px;
+                margin-right: 50px;
             }
         }
         .button-group{
