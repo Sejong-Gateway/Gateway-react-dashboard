@@ -1,10 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import {ReactComponent as GatewayLogo} from '../img/GatewayLogo.svg';
-import {ReactComponent as Logout} from '../img/Logout.svg';
-import {ReactComponent as Menu} from '../img/Menu.svg';
-import {ReactComponent as ProfileMain} from '../img/ProfileMain.svg';
-import {ReactComponent as ProfileUser} from '../img/ProfileUser.svg';
+import styled,{css} from 'styled-components';
+
 
 const Sidebarblock = styled.div`
 
@@ -33,29 +29,9 @@ const Sidebarblock = styled.div`
       justify-content: space-between;
       margin: 83px 102px 0px;
     }
-    .userList-box{
-      min-width: 137px;
-      display:flex;
-      align-items:center;
-      font-size: 20px;
-      font-weight: bold;
-      color: #dedede;
-      //color: #6c63ff;
-      justify-content: space-between;
-      margin: 96px 79px 0px;
-    }
-    .subjectList-box{
-      min-width: 137px;
-      display:flex;
-      align-items:center;
-      font-size: 20px;
-      font-weight: bold;
-      //color: #dedede;
-      color: #6c63ff;
-      justify-content: space-between;
-      margin: 46px 79px 0px;
-    }
-    }
+  }
+    
+    
     .bottom{
       min-width: 137px;
       display:flex;
@@ -65,46 +41,33 @@ const Sidebarblock = styled.div`
       color: #6c63ff;
       justify-content: space-between;
       margin: 0px 81px 52px;
-  
     }
     
     
-`;
+`
 
 
 
-const Sidebar = ({ user_name }) => {
+const Sidebar = ({ user_name}) => {
+ 
   return (
     <Sidebarblock user_name={user_name}>
       <div className = "top">
       <div className = "logo">
-        <GatewayLogo/>
+        <img src='/img/GatewayLogo.svg'/>
         </div>
 
         <div className = "profileMain-box">
-        <ProfileMain/>
+        <img src='/img/ProfileMain.svg'/>
         {user_name}
         </div>
-
-        <div className = "userList-box">
-        <ProfileUser/>
-        유저 관리
         </div>
 
-        <div className = "subjectList-box">
-        <Menu/>
-        과목 관리
-        </div>
-      </div>
 
       <div className = "bottom">
-      
-        <Logout/>
+      <img src='/img/Logout.svg'/>
         로그아웃
       </div>
-      
-      
-      
     </Sidebarblock>
         
   

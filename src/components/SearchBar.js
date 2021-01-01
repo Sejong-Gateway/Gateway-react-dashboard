@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {ReactComponent as Search} from '../img/Search.svg';
 
 const SearchbarStyle = styled.div `
     width: 235px;
@@ -8,16 +7,27 @@ const SearchbarStyle = styled.div `
     align-items: center;
     justify-content: space-between;
     font-size: 15px;
+    color: #707070;
     padding: 11px 20px;
     border-radius: 19px;
     background-color: #ffffff;
+
+    input{
+        border: none;
+        ::placeholder{
+        color:#dedede;
+        font-size: 12px;
+        }
+    }
+    
 `
 
-const Searchbar = ({hint_text}) =>{
+const Searchbar = ({text}) =>{
     return (
         <SearchbarStyle>
-            <Search />
-            {hint_text}
+            <img src='/img/Search.svg'/>
+            <input placeholder = {`${text}을 입력해주세요`}>
+            </input>
         </SearchbarStyle>
     );
 }

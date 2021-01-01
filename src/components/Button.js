@@ -1,9 +1,10 @@
 import styled, {css} from 'styled-components';
 
 const ButtonStyle = styled.div `
-    max-width: 7.5rem;
+    width: 7.5rem;
+    height: 46px;
     height: 2.875rem;
-    padding: 0.875rem 2.8125rem;
+    
     font-size: 1.1875rem;
     border-radius: 0.375rem;
     display: flex;

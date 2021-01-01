@@ -1,25 +1,55 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
-import Sidebar from '../components/Sidebar';
+import SideBar from '../components/SideBar';
 import UserList from '../components/UserList';
 import SearchBar from '../components/SearchBar';
 
 const UserListPageStyle = styled.div `
     background: #f8f8f8;
-    .Button{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    
 
+    .container{
+        display: flex;
+        flex-direction: column;
+        margin: 74px 64px 0px;
+        .header{
+        border: 1px solid red;
+        width:1506px;
+        display: flex;
+        align-items:center;
+        justify-content: space-between;
+        margin-bottom:52px;
+        &>div{
+            display: flex;
+            h1{
+            margin-right: 50px;
+            }
+        }
     }
-
-    .list-group{
-
-    }
+}
+    
 `
 
 const UserListPage = (props) =>{
+    
     return (
         <UserListPageStyle>
+            <SideBar user_name = "고윤정"/>
+            <div className = "container">
+            <div className="header">
+                <div>
+                <h1>유저관리</h1>
+                <SearchBar text = "학번"/>
+                </div>
+                <Button
+                name = "삭제" primary></Button>
+            </div>
             <UserList/>
+            </div>
             
             {/*
             <UserList/>
@@ -29,7 +59,7 @@ const UserListPage = (props) =>{
                 classname="Button"
                 name = "삭제" primary></Button>
             </div>
-            <SearchBar hint_text = "학번을 입력해주세요"></SearchBar>
+            <SearchBar text = "학번"></SearchBar>
             */}
             
         </UserListPageStyle>

@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Route} from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
+import LogInPage from './pages/LogInPage';
+import UserListPage from './pages/UserListPage';
+import SubjectPage from './pages/SubjectPage';
 
+const GlobalStyle = createGlobalStyle`
+  h1{
+    margin:0;
+    font-size: 30px;
+    font-weight: bold;
+    color: #707070;
+  }
+  h2{
+    margin:0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #707070;
+  }
+  h3{
+    margin:0;
+    font-size: 19px;
+    font-weight: bold;
+    color: #707070;
+  }
+`;
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <GlobalStyle/>
+    <Route exact component = {LogInPage} path ='/logIn'></Route>
+    <Route exact component = {UserListPage} path ='/user'></Route>
+    <Route exact component = {SubjectPage} path ='/subject'></Route>
+    </>
   );
 }
 
