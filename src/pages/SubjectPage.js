@@ -23,6 +23,7 @@ const SubjectStyle = styled.div `
         align-items:center;
         justify-content: space-between;
         margin-bottom:52px;
+        margin-left: 12px;
         &>div{
             display: flex;
             h1{
@@ -42,6 +43,8 @@ const SubjectStyle = styled.div `
         display: flex;
         align-items:center;
         margin-bottom: 31px;
+        margin-left: 12px;
+        
     }
 }
     

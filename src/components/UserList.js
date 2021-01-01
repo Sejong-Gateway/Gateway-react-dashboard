@@ -25,10 +25,13 @@ const ListNameCheck = styled.div `
     width: 19px;
     height: 19px;
     border: solid 1px #707070;
+    border-radius: 2px;
+    margin-bottom: 14px;
 `
 
 const ListStyle = styled.div `
 .list-name{
+    
     width: 1506px;
     display:flex;
     align-items: center;
@@ -42,7 +45,6 @@ const ListStyle = styled.div `
         justify-content: center;
         margin-bottom: 14px;
     }
-    
     
 }
 .list-group{
@@ -92,7 +94,6 @@ const ListStyle = styled.div `
         
     }
 }
-    
 `
 
 
