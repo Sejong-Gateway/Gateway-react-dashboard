@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
-import SideBar from '../components/SideBar';
+import SideBar from '../components/Sidebar';
 import UserList from '../components/UserList';
 import SearchBar from '../components/SearchBar';
 

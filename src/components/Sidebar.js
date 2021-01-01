@@ -1,5 +1,6 @@
 import React from 'react';
 import styled,{css} from 'styled-components';
+import SideBarClick from './SideBarClick';
 
 
 const Sidebarblock = styled.div`
@@ -61,9 +62,9 @@ const Sidebar = ({ user_name}) => {
         <img src='/img/ProfileMain.svg'/>
         {user_name}
         </div>
-        </div>
-
-
+        <SideBarClick/>
+      </div>
+      
       <div className = "bottom">
       <img src='/img/Logout.svg'/>
         로그아웃
