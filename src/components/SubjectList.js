@@ -15,15 +15,19 @@ const ListStyle = styled.div `
             justify-content:space-between;
             padding: 28px 37px;
             box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+            border-radius: 10px;
             background-color: #ffffff;
             .subjectName{
                     min-width: 219px;
                     display: flex;
                     justify-content:space-between;
+
+                    .click:focus{
+
+                    }
                 }
             .majorBlock{
-                width: 135px;
-                height: 25px;
+                padding: 0.1rem 0.025rem;
                 border-radius: 13px;
                 background-color: #fdfbdb;
 
@@ -31,8 +35,7 @@ const ListStyle = styled.div `
                 color: #707070;
             }
             .semesterBlock{
-                width: 53px;
-                height: 25px;
+                padding: 0.1rem 0.025rem;
                 border-radius: 13px;
                 background-color: #dbeffd;
 
@@ -40,8 +43,7 @@ const ListStyle = styled.div `
                 color: #707070;
             }
             .typeBlock{
-                width: 56px;
-                height: 25px;
+                padding: 0.1rem 0.025rem;
                 border-radius: 13px;
                 background-color: #fddbdb;
 
@@ -60,9 +62,49 @@ const ListStyle = styled.div `
         }
     }
 `
-const cardMenuPop = styled.div `
+const PopStyle = styled.div `
+    width: 107px;
+    height: 85px;
+    padding: 12px 27px;
+    border-radius: 2px;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    .correction{
+        display:flex;
+        justify-content: space-between;
 
+        font-size: 15px;
+        font-weight: bold;
+        color: #707070;
+    }
+    .delete{
+        display:flex;
+        justify-content: space-between;
+
+        font-size: 15px;
+        font-weight: bold;
+        color: #707070;
+    }
 `
+const CardMenuPop = () =>{
+return(
+    <PopStyle>
+        <div className = "correction">
+        <img src='/img/Correction.svg'/>
+        수정
+        </div>
+
+        <div className = "delete">
+        <img src='/img/Trashbin.svg'/>
+        삭제
+        </div>
+    </PopStyle>
+);
+}
 
 const SubjectList = (props)=>{
     const subjects = [
@@ -107,8 +149,12 @@ const SubjectList = (props)=>{
         const {name,major,semester,type} = subject;
         return(
             <div className="item">
+                <div className="cardMenuPop">
+
+                </div>
                 <div className="subjectName">
                 <h3>{name}</h3>
+                
                 <img src='/img/CardMenu.svg'/>
                 </div>
                 

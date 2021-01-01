@@ -28,6 +28,7 @@ const WhiteBlock = styled.div `
             width: 267px;
             font-size: 15px;
             margin-bottom: 30px;
+            padding-bottom: 8px;
 
             ::placeholder{
                 font-size: 12px;
