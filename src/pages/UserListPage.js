@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
-import SideBar from '../components/Sidebar';
+import SideBar from '../components/SideBar';
 import UserList from '../components/UserList';
 import SearchBar from '../components/SearchBar';
 
@@ -17,7 +17,6 @@ const UserListPageStyle = styled.div `
         flex-direction: column;
         margin: 74px 64px 0px;
         .header{
-        border: 1px solid red;
         width:1506px;
         display: flex;
         align-items:center;

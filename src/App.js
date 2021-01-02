@@ -24,6 +24,12 @@ const GlobalStyle = createGlobalStyle`
     font-weight: bold;
     color: #707070;
   }
+  h4{
+    margin:0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #707070;
+  }
 `;
 function App() {
   return (

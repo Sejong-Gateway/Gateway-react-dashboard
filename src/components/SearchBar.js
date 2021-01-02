@@ -13,6 +13,7 @@ const SearchbarStyle = styled.div `
     background-color: #ffffff;
 
     input{
+        outline: none;
         border: none;
         ::placeholder{
         color:#dedede;
