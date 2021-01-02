@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
-import SideBar from '../components/Sidebar';
+import SideBar from '../components/SideBar';
 import UserList from '../components/UserList';
 import SearchBar from '../components/SearchBar';
 
@@ -50,7 +50,10 @@ const UserListPage = (props) =>{
             </div>
             <UserList/>
             </div>
-            
+            <button>
+                <img>
+                </img>
+            </button>
             {/*
             <UserList/>
             <Sidebar user_name = "고윤정"></Sidebar>

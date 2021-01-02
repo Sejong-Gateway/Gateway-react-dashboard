@@ -5,7 +5,7 @@ import SideBarClick from './SideBarClick';
 
 const Sidebarblock = styled.div`
 
-    width: 17.75rem;
+    min-width: 310px;
     min-height: 100vh;
     //padding: 100px 79px 52px 0;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -16,9 +16,8 @@ const Sidebarblock = styled.div`
     justify-content: space-between;
     
     .top{
-      
       .logo{
-      margin: 70px 96px 0px;
+      margin: 70px 110px 0px;
     }
     .profileMain-box{
       min-height: 123px;
@@ -49,7 +48,7 @@ const Sidebarblock = styled.div`
 
 
 
-const Sidebar = ({ user_name}) => {
+const SideBar = ({ user_name}) => {
  
   return (
     <Sidebarblock user_name={user_name}>
@@ -75,4 +74,4 @@ const Sidebar = ({ user_name}) => {
   );
 }
 
-export default Sidebar;
+export default SideBar;

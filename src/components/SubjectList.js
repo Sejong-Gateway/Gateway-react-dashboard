@@ -8,26 +8,44 @@ const ListStyle = styled.div `
         //padding-left: 12px;
         //padding-right: 12px;
         .item{
+            position: relative;
             margin: 0px 12px 24px;
             width: 282px;
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
+            border: 1px solid white;
             justify-content:space-between;
             padding: 28px 37px;
             box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
             border-radius: 10px;
             background-color: #ffffff;
             .subjectName{
-                    min-width: 219px;
-                    display: flex;
-                    justify-content:space-between;
-
-                    .click:focus{
-
+                min-width: 219px;
+                display: flex;
+                justify-content:space-between;
+                    .button{
+                    outline: none;
+                    border: none;
+                    background-color:white;
+                    }
+                    .overlay{
+                        position: absolute;
+                        display: none;
+                    }
+                    .button:focus + .overlay{
+                        position: absolute;
+                        top: 0px;
+                        left: 20px;
+                        /* top: -59px;
+                        left: -225px; */
+                        display: block;
+                        z-index: 100;
                     }
                 }
             .majorBlock{
-                padding: 0.1rem 0.025rem;
+                padding: 0.25rem 1rem;
+                padding-top : 0.15rem;
                 border-radius: 13px;
                 background-color: #fdfbdb;
 
@@ -35,7 +53,8 @@ const ListStyle = styled.div `
                 color: #707070;
             }
             .semesterBlock{
-                padding: 0.1rem 0.025rem;
+                padding: 0.25rem 1rem;
+                padding-top : 0.15rem;
                 border-radius: 13px;
                 background-color: #dbeffd;
 
@@ -43,7 +62,8 @@ const ListStyle = styled.div `
                 color: #707070;
             }
             .typeBlock{
-                padding: 0.1rem 0.025rem;
+                padding: 0.25rem 1rem;
+                padding-top : 0.15rem;
                 border-radius: 13px;
                 background-color: #fddbdb;
 
@@ -59,13 +79,22 @@ const ListStyle = styled.div `
             &> div+div{
                 margin-top: 20px;
             }
+            div:checked + label{
+
+            }
+            
         }
+        
     }
 `
 const PopStyle = styled.div `
+    
+    position: absolute;
+    top: 59px;
+    left: 225px;
     width: 107px;
     height: 85px;
-    padding: 12px 27px;
+    //padding: 12px 27px;
     border-radius: 2px;
     box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.16);
     background-color: #ffffff;
@@ -73,40 +102,40 @@ const PopStyle = styled.div `
     flex-direction:column;
     align-items: center;
     justify-content: center;
-    .correction{
+
+    button{
+        padding: 12px 0px;
+        min-width: 54px;
+        border: none;
+        background-color: white;
         display:flex;
+        align-items: center;
         justify-content: space-between;
 
         font-size: 15px;
         font-weight: bold;
         color: #707070;
     }
-    .delete{
-        display:flex;
-        justify-content: space-between;
-
-        font-size: 15px;
-        font-weight: bold;
-        color: #707070;
-    }
+    
 `
 const CardMenuPop = () =>{
 return(
     <PopStyle>
-        <div className = "correction">
-        <img src='/img/Correction.svg'/>
+        <button>
+        <img src='/img/Correction.svg' style={{marginRight:"13px"}}/>
         수정
-        </div>
+        </button>
 
-        <div className = "delete">
-        <img src='/img/Trashbin.svg'/>
+        <button>
+        <img src='/img/Trashbin.svg' style={{marginRight:"13px"}}/>
         삭제
-        </div>
+        </button>
     </PopStyle>
 );
 }
 
 const SubjectList = (props)=>{
+    const [focusItem, setFocusItem] = useState([]);
     const subjects = [
         {
         "name" : "소프트웨어 설계기초",
@@ -145,18 +174,32 @@ const SubjectList = (props)=>{
         }
     ] 
 
-    const subjectList = subjects.map((subject)=>{
+    const subjectList = subjects.map((subject,i)=>{
         const {name,major,semester,type} = subject;
         return(
-            <div className="item">
-                <div className="cardMenuPop">
-
-                </div>
+            <div className="item" id={"a"+i} onClick ={(e)=>{
+                if(focusItem.find(f => f === i + 1)){
+                    setFocusItem([...focusItem.filter((focus)=> focus !== i+1)]);
+                }
+                else{
+                    setFocusItem([...focusItem,i+1]);
+                }
+            }}
+            style = {focusItem.find((focus)=> focus ===i+1)? 
+                {border:"1px solid #6c63ff"}:{}}
+            >
                 <div className="subjectName">
                 <h3>{name}</h3>
-                
+                <button className="button">
                 <img src='/img/CardMenu.svg'/>
+                </button>
+                <div className ="overlay">
+                <CardMenuPop/>
                 </div>
+                </div>
+                
+                
+                
                 
                 <div className="majorBlock">
                     {major}

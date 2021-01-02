@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideBar from '../components/Sidebar';
+import SideBar from '../components/SideBar';
 import SearchBar from '../components/SearchBar';
 import Button from '../components/Button';
 import DropDownBox from '../components/DropDownBox';
@@ -17,7 +17,6 @@ const SubjectStyle = styled.div `
         flex-direction: column;
         margin: 74px 64px 0px;
         .header{
-        border: 1px solid black;
         width:1506px;
         display: flex;
         align-items:center;

@@ -47,7 +47,7 @@ const SideBarClickSubjectStyle = styled.div `
     }
 
     .subjectList-box{
-        color: #6c63ff;
+      color: #6c63ff;
       min-width: 137px;
       display:flex;
       align-items:center;
