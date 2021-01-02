@@ -9,7 +9,7 @@ const SideBarClickUserStyle = styled.div `
     }
     .userList-box{
         color: #6c63ff;
-        min-width: 126px;
+        min-width: 137px;
         display:flex;
         align-items:center;
         font-size: 20px;
@@ -20,7 +20,7 @@ const SideBarClickUserStyle = styled.div `
     }
 
     .subjectList-box{
-      min-width: 126px;
+      min-width: 137px;
       display:flex;
       align-items:center;
       font-size: 20px;
@@ -35,19 +35,20 @@ const SideBarClickSubjectStyle = styled.div `
         color: #dedede;
     }
     .userList-box{
-        min-width: 126px;
+
+        min-width: 137px;
         display:flex;
         align-items:center;
         font-size: 20px;
         font-weight: bold;
-       
+        
         justify-content: space-between;
         margin: 96px 79px 0px;
     }
 
     .subjectList-box{
-    color: #6c63ff;
-      min-width: 126px;
+      color: #6c63ff;
+      min-width: 137px;
       display:flex;
       align-items:center;
       font-size: 20px;
@@ -63,7 +64,7 @@ const ClickUserList = () =>{
             <Link to='/user'>
                 <div className = "userList-box">
                     <img src='/img/ProfileUserOn.svg'/>
-                    사용자 관리
+                    유저 관리
                 </div>
             </Link>
 
@@ -83,7 +84,7 @@ const ClickSubjectList = () =>{
             <Link to='/user'>
                 <div className = "userList-box">
                     <img src='/img/ProfileUserOff.svg'/>
-                    사용자 관리
+                    유저 관리
                 </div>
             </Link>
             

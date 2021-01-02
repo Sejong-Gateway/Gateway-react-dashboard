@@ -17,6 +17,7 @@ const UserListPageStyle = styled.div `
         flex-direction: column;
         margin: 74px 64px 0px;
         .header{
+        border: 1px solid red;
         width:1506px;
         display: flex;
         align-items:center;
@@ -49,7 +50,10 @@ const UserListPage = (props) =>{
             </div>
             <UserList/>
             </div>
-            
+            <button>
+                <img>
+                </img>
+            </button>
             {/*
             <UserList/>
             <Sidebar user_name = "고윤정"></Sidebar>

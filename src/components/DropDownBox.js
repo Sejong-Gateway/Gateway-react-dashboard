@@ -4,10 +4,13 @@ import styled from 'styled-components';
 
 const DropdownBoxStyle = styled.div `
     .dropdown{
-        width: 98px;
+
         border-radius: 19px;
         margin-right: 30px;
-        }
+    }
+    .ui.selection.dropdown{
+        min-width: 10rem;
+    }
 `  
 
 const DropSemester = (props) =>{

@@ -48,7 +48,7 @@ const Sidebarblock = styled.div`
 
 
 
-const Sidebar = ({ user_name}) => {
+const SideBar = ({ user_name}) => {
  
   return (
     <Sidebarblock user_name={user_name}>
@@ -74,4 +74,4 @@ const Sidebar = ({ user_name}) => {
   );
 }
 
-export default Sidebar;
+export default SideBar;

@@ -14,6 +14,7 @@ const ListStyle = styled.div `
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            border: 1px solid white;
             justify-content:space-between;
             padding: 28px 37px;
             box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -29,10 +30,17 @@ const ListStyle = styled.div `
                     background-color:white;
                     }
                     .overlay{
+                        position: absolute;
                         display: none;
                     }
                     .button:focus + .overlay{
-                    display: block;
+                        position: absolute;
+                        top: 0px;
+                        left: 20px;
+                        /* top: -59px;
+                        left: -225px; */
+                        display: block;
+                        z-index: 100;
                     }
                 }
             .majorBlock{
@@ -170,7 +178,7 @@ const SubjectList = (props)=>{
         const {name,major,semester,type} = subject;
         return(
             <div className="item" id={"a"+i} onClick ={(e)=>{
-                if(e===false){
+                if(focusItem.find(f => f === i + 1)){
                     setFocusItem([...focusItem.filter((focus)=> focus !== i+1)]);
                 }
                 else{
