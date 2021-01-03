@@ -64,10 +64,12 @@ const SubjectPage = (props) =>{
             <div className = "header">
                 <h1>과목 관리</h1>
                 
-                <button onClick={()=>setIsOpen(true)}>
-                <Button name = "추가"/>
-                <Button name = "삭제" primary/>
-                </button>
+                
+        
+                <div className="button-group">
+                    <Button onClick={()=>setIsOpen(true)}>추가</Button>
+                    <Button primary>삭제</Button>
+                </div>
 
                 <PlusModal open={isOpen}
                     onClose={()=>setIsOpen(false)}/>
