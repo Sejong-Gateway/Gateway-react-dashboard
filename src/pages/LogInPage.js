@@ -11,14 +11,13 @@ const LogInPageStyle = styled.div `
     justify-content: center;
 `
 const WhiteBlock = styled.div `
-        width: 409px;
+        width: 379px;
         padding: 60px 71px;
         border-radius: 10px;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         background-color: #ffffff;
         display: flex;
         flex-direction: column;
-        //align-items: center;
         justify-content: center;
 
         input{

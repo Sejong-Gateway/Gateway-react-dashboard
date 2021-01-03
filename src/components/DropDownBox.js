@@ -3,13 +3,9 @@ import { Dropdown } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const DropdownBoxStyle = styled.div `
-    .dropdown{
-
-        border-radius: 19px;
-        margin-right: 30px;
-    }
     .ui.selection.dropdown{
-        min-width: 10rem;
+        min-width: 11rem;
+        margin-right: 30px;
     }
 `  
 
