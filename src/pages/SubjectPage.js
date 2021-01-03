@@ -1,10 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled from 'styled-components';
 import SideBar from '../components/SideBar';
 import SearchBar from '../components/SearchBar';
 import Button from '../components/Button';
 import DropDownBox from '../components/DropDownBox';
 import SubjectList from '../components/SubjectList';
+import PlusModal from '../components/PlusModal';
 
 const SubjectStyle = styled.div `
     background: #f8f8f8;
@@ -29,14 +30,17 @@ const SubjectStyle = styled.div `
                 margin-right: 50px;
             }
         }
-        .button-group{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        & > div + div{
+        button{
+            outline: none;
+            border: none;
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            & > div + div{
             margin-left: 1rem;
+            }
         }
-    }
     }
     .subheader{
         display: flex;
@@ -51,6 +55,7 @@ const SubjectStyle = styled.div `
 `
 
 const SubjectPage = (props) =>{
+    const [isOpen, setIsOpen]=useState(false)
     return (
         <SubjectStyle>
             <SideBar user_name = "고윤정"/>
@@ -58,14 +63,18 @@ const SubjectPage = (props) =>{
             
             <div className = "header">
                 <h1>과목 관리</h1>
-                <div className = "button-group">
-                <Button name = "추가"></Button>
-                <Button name = "삭제" primary></Button>
-                </div>
+                
+                <button onClick={()=>setIsOpen(true)}>
+                <Button name = "추가"/>
+                <Button name = "삭제" primary/>
+                </button>
+
+                <PlusModal open={isOpen}
+                    onClose={()=>setIsOpen(false)}/>
             </div>
 
             <div className = "subheader">
-            <SearchBar text ="과목명"/>
+            <SearchBar text ="과목명" style={{marginRight:'47px'}}/>
             <DropDownBox/>
             </div>
             <SubjectList/>
