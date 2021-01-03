@@ -1,3 +1,4 @@
+import { Children } from 'react';
 import styled, {css} from 'styled-components';
 
 const ButtonStyle = styled.div `
@@ -25,10 +26,10 @@ const ButtonStyle = styled.div `
     }
 `
 
-const Button = ({name,primary}) =>{
+const Button = ({children, ...rest}) =>{
     return (
-        <ButtonStyle primary = {primary}>
-            {name}
+        <ButtonStyle {...rest}>
+            {children}
         </ButtonStyle>
     );
 }
