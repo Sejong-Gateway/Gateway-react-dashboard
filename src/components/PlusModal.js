@@ -124,7 +124,8 @@ const DropDownList = () =>{
         </div>
         </div>
 
-        <div className="dropContainer">
+        <div className="dropContainer"
+        style={{marginTop:'33px'}}>
         <div className="drop">
         <h2>이수 구분</h2>
         <DropType/>

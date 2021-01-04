@@ -11,7 +11,7 @@ const LogInPageStyle = styled.div `
     justify-content: center;
 `
 const WhiteBlock = styled.div `
-        width: 379px;
+        width: 409px;
         padding: 60px 71px;
         border-radius: 10px;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);

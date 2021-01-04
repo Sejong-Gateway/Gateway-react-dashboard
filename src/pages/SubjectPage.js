@@ -51,10 +51,7 @@ const SubjectStyle = styled.div `
         
     }
 }
-    
-    
 `
-
 const SubjectPage = (props) =>{
     const [isOpen, setIsOpen]=useState(false)
     return (
