@@ -30,7 +30,8 @@ const SubjectStyle = styled.div `
                 margin-right: 50px;
             }
         }
-        button{
+        .button-group{
+            
             outline: none;
             border: none;
             background: none;

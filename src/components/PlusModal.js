@@ -24,17 +24,17 @@ const PlusModalStyle = styled.div `
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width:31.875rem;
-    padding: 2.0625rem 5.375rem 3.5625rem;
+    width:540px;
+    padding: 33px 86px 57px;
     border-radius: 0.625rem;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    button{
-        /* outline: none;
+    &> button{
+        outline: none;
         border: none;
-        background: none; */
+        background: none; 
     }
     h1{
         margin-bottom:2.5625rem;
@@ -43,7 +43,7 @@ const PlusModalStyle = styled.div `
             outline: none;
             border: none;
             border-bottom: 0.125rem solid #6c63ff;
-            width: 21.125rem;
+            width: 368px;
             font-size: 0.9375rem;
             margin-bottom: 2.0625rem;
             padding-bottom: 0.5rem;
@@ -55,7 +55,7 @@ const PlusModalStyle = styled.div `
         }
 `
 const PlusBlock = styled.div `
-    width: 21.125rem;
+    width: 368px;
     height: 2.4375rem;
     border-radius: 0.25rem;
     background-color: #6c63ff;
@@ -72,18 +72,21 @@ const PlusModal  = ({open, onClose}) =>{
     if(!open) return null
     return(
         <>
-            <OverlayStyle/>
+            <OverlayStyle onClick={onClose}/>
             
             <PlusModalStyle>
             
-            <button style={{marginLeft:'19.6875rem', marginBottom:'0.5625rem'}}onClick={onClose}>
+            <button 
+            style={{marginLeft:'345px', marginBottom:'0.5625rem',cursor: 'pointer'}}
+            onClick={onClose}>
             <img src='/img/ModalExit.svg'/>
             </button>
             
             <h1>과목 추가</h1>
             <h2 style={{marginBottom:'0.4375rem'}}>과목 이름</h2>
             <input placeholder='과목이름을 입력해주세요'/>
-            
+            <h2 style={{marginBottom:'0.4375rem'}}>학점</h2>
+            <input placeholder='학점을 입력해주세요'/>
             <DropDownList/>
             <PlusBlock>추가하기</PlusBlock>
             
@@ -93,15 +96,11 @@ const PlusModal  = ({open, onClose}) =>{
     );
 }
 const DropDownListStyle = styled.div `
-    .container{
-        border: 0.0625rem solid blue;
-        min-width: 20.625rem;
+    .dropContainer{
         display:flex;
         flex-direction: row;
         justify-content: space-between;
         .drop{
-            width: 176px;
-            border: 0.0625rem solid red;
             display: flex;
             flex-direction: column;
             h2{
@@ -113,7 +112,7 @@ const DropDownListStyle = styled.div `
 const DropDownList = () =>{
     return(
         <DropDownListStyle>
-        <div className="container">
+        <div className="dropContainer">
         <div className="drop">
         <h2>학년</h2>
         <DropSemester/>
@@ -125,7 +124,7 @@ const DropDownList = () =>{
         </div>
         </div>
 
-        <div className="container">
+        <div className="dropContainer">
         <div className="drop">
         <h2>이수 구분</h2>
         <DropType/>

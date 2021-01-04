@@ -5,7 +5,7 @@ const ButtonStyle = styled.div `
     width: 7.5rem;
     height: 46px;
     height: 2.875rem;
-    
+    cursor: pointer;
     font-size: 1.1875rem;
     border-radius: 0.375rem;
     display: flex;

@@ -44,8 +44,7 @@ const UserListPage = (props) =>{
                 <h1>사용자 관리</h1>
                 <SearchBar text = "학번"/>
                 </div>
-                <Button
-                name = "삭제" primary></Button>
+                <Button primary>삭제</Button>
             </div>
             <UserList/>
             </div>
