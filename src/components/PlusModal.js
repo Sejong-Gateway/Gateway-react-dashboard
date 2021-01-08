@@ -84,7 +84,7 @@ const PlusModal  = ({open, onClose}) =>{
             
             <h1>과목 추가</h1>
             <h2 style={{marginBottom:'0.4375rem'}}>과목 이름</h2>
-            <input placeholder='과목이름을 입력해주세요'/>
+            <input placeholder='과목 이름을 입력해주세요'/>
             <h2 style={{marginBottom:'0.4375rem'}}>학점</h2>
             <input placeholder='학점을 입력해주세요'/>
             <DropDownList/>

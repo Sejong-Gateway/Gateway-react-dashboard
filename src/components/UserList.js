@@ -1,37 +1,28 @@
-import React,{useState} from 'react';
+import React,{useState,useRef} from 'react';
 import styled from 'styled-components';
 
-/*
-function highlight (){
-    const [active,setActive] =useState(0);
-
-    const onActive=()=>{
-        setActive(1);
-    }
-    const offActive=()=>{
-        setActive(0);
-    }
-    return(
-        <>
-        {active ?
-        <item border = "solid 2px #6c63ff"/>
-        : null
-    }
-        </>
-    );
-}
-*/
-const ListNameCheck = styled.div `
-    width: 19px;
-    height: 19px;
-    border: solid 1px #707070;
-    border-radius: 2px;
-    margin-bottom: 14px;
-`
 
 const ListStyle = styled.div `
 .list-name{
-    
+    .checkbox-container{
+        width: 21px;
+                input{
+                    display:none;
+                }
+                input:checked + label{
+                    background: url(${'/img/Check.svg'}) no-repeat center center;
+                    border: 1px solid #6c63ff;
+                    width: 17px;
+                    height: 17px;
+                }
+                input + label {
+                    border-radius: 2px;
+                    display: inline-block;
+                    width: 17px;
+                    height: 17px;
+                    border: 1px solid #707070;
+                }
+    }
     width: 1506px;
     display:flex;
     align-items: center;
@@ -45,7 +36,6 @@ const ListStyle = styled.div `
         justify-content: center;
         margin-bottom: 14px;
     }
-    
 }
 .list-group{
     margin-bottom:8px;
@@ -61,7 +51,7 @@ const ListStyle = styled.div `
                     width: 17px;
                     height: 17px;
                 }
-                input + label{
+                input + label {
                     border-radius: 2px;
                     display: inline-block;
                     width: 17px;
@@ -118,14 +108,17 @@ const UserList = (props)=>{
             semester : 6,
             createdAt : "2020-12-05"
         }
-    ] 
+    ]  
 
     const userList = users.map((user, i)=>{
         const {studentId, major,semester,createdAt} = user;
         return(
-            <div className="item" style = {focusItem.find((focus)=> focus ===i+1)? {border:"1px solid #6c63ff"}:{}}>
+            <div className="item" 
+            style = {focusItem.find((focus)=> focus ===i+1)? 
+            {border:"1px solid #6c63ff"}:{}}>
                 <div className = "checkbox-container">
-                    <input id={"a"+i} type="checkbox" onChange = {(e)=>{
+                    <input id={"a"+i} type="checkbox"
+                    onChange = {(e)=>{
                         if(e.target.checked===false){
                             setFocusItem([...focusItem.filter((focus)=> focus !== i+1)]);
                         }
@@ -154,7 +147,21 @@ const UserList = (props)=>{
     return(
         <ListStyle>
             <div className = "list-name">
-                <ListNameCheck/>
+                <div className ="checkbox-container">
+                <input id='a' type="checkbox"
+                onChange={(e)=>{
+                    if(e.target.checked===true){
+                        setFocusItem([...Array(users.length+1).keys()]);
+                        useRef()
+                    }
+                    else{
+                        setFocusItem([]);
+                    }
+                }}
+                />
+                <label htmlFor = {'a'}></label>
+                </div>
+                
                 <h3>학번</h3>
                 <h3>전공</h3>
                 <h3>이수학기</h3>

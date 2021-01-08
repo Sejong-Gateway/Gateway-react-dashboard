@@ -142,35 +142,40 @@ const SubjectList = (props)=>{
         "major" : "소프트웨어",
         "semester" : "6",
         "type" : "전필",
-        "enteranceYear" : 2019
+        "enteranceYear" : 2019,
+        "credit": "3"
         },
         {
         "name" : "소프트웨어 설계기초",
         "major" : "디자인이노베이션",
         "semester" : "6",
         "type" : "전필",
-        "enteranceYear" : 2019
+        "enteranceYear" : 2019,
+        "credit": "4"
         },
         {
         "name" : "소프트웨어 설계기초",
         "major" : "컴퓨터공학",
         "semester" : "6",
         "type" : "전필",
-        "enteranceYear" : 2019
+        "enteranceYear" : 2019,
+        "credit": "3"
         },
         {
         "name" : "소프트웨어 설계기초",
         "major" : "소프트웨어학과",
         "semester" : "6",
         "type" : "전필",
-        "enteranceYear" : 2019
+        "enteranceYear" : 2019,
+        "credit": "3"
         },
         {
         "name" : "소프트웨어 설계기초",
         "major" : "소프트웨어학과",
         "semester" : "6",
         "type" : "전필",
-        "enteranceYear" : 2019
+        "enteranceYear" : 2019,
+        "credit": "2"
         }
     ] 
 
@@ -185,7 +190,7 @@ const SubjectList = (props)=>{
                     setFocusItem([...focusItem,i+1]);
                 }
             }}
-            style = {focusItem.find((focus)=> focus ===i+1)? 
+          a  style = {focusItem.find((focus)=> focus ===i+1)? 
                 {border:"1px solid #6c63ff"}:{}}
             >
                 <div className="subjectName">
