@@ -152,7 +152,7 @@ const UserList = (props)=>{
                 onChange={(e)=>{
                     if(e.target.checked===true){
                         setFocusItem([...Array(users.length+1).keys()]);
-                        useRef()
+                        //useRef()
                     }
                     else{
                         setFocusItem([]);

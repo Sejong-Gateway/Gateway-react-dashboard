@@ -64,7 +64,7 @@ const ClickUserList = () =>{
             <Link to='/user'>
                 <div className = "userList-box">
                     <img src='/img/ProfileUserOn.svg'/>
-                    유저 관리
+                    사용자 관리
                 </div>
             </Link>
 
@@ -84,7 +84,7 @@ const ClickSubjectList = () =>{
             <Link to='/user'>
                 <div className = "userList-box">
                     <img src='/img/ProfileUserOff.svg'/>
-                    유저 관리
+                    사용자 관리
                 </div>
             </Link>
             

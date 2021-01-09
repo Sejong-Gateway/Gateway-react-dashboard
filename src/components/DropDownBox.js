@@ -184,7 +184,6 @@ h4{
 `
 
 const DropDownBox = (props) =>{
-
     return (
         <DropListStyle>
             <h4>학년 :</h4>

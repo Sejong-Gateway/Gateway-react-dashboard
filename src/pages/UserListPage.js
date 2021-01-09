@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState} from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import SideBar from '../components/SideBar';
@@ -34,7 +34,10 @@ const UserListPageStyle = styled.div `
 `
 
 const UserListPage = (props) =>{
-    
+    const [value, setValue]=useState();
+    const onChange = (v) =>{
+        setValue(v);
+    }
     return (
         <UserListPageStyle>
             <SideBar user_name = "고윤정"/>
@@ -42,11 +45,11 @@ const UserListPage = (props) =>{
             <div className="header">
                 <div>
                 <h1>사용자 관리</h1>
-                <SearchBar text = "학번"/>
+                <SearchBar searchValue={value} onChange={onChange} text = "학번"/>
                 </div>
                 <Button primary>삭제</Button>
             </div>
-            <UserList/>
+            <UserList value={value}/>
             </div>
             
         </UserListPageStyle>

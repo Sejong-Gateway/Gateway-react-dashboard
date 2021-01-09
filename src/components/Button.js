@@ -12,7 +12,6 @@ const ButtonStyle = styled.div `
     align-items: center;
     justify-content: center;
 
-
     ${props =>
         props.primary ?
         css `

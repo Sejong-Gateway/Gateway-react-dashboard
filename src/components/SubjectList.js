@@ -8,6 +8,7 @@ const ListStyle = styled.div `
         //padding-left: 12px;
         //padding-right: 12px;
         .item{
+            cursor :pointer;
             position: relative;
             margin: 0px 12px 24px;
             width: 282px;
@@ -79,9 +80,6 @@ const ListStyle = styled.div `
             &> div+div{
                 margin-top: 20px;
             }
-            div:checked + label{
-
-            }
             
         }
         
@@ -111,6 +109,7 @@ const PopStyle = styled.div `
         display:flex;
         align-items: center;
         justify-content: space-between;
+        cursor: pointer;
 
         font-size: 15px;
         font-weight: bold;
@@ -175,7 +174,7 @@ const SubjectList = (props)=>{
         "semester" : "6",
         "type" : "전필",
         "enteranceYear" : 2019,
-        "credit": "2"
+        "credit": "3"
         }
     ] 
 
@@ -190,22 +189,18 @@ const SubjectList = (props)=>{
                     setFocusItem([...focusItem,i+1]);
                 }
             }}
-          a  style = {focusItem.find((focus)=> focus ===i+1)? 
+            style = {focusItem.find((focus)=> focus ===i+1)? 
                 {border:"1px solid #6c63ff"}:{}}
             >
                 <div className="subjectName">
-                <h3>{name}</h3>
-                <button className="button">
-                <img src='/img/CardMenu.svg'/>
-                </button>
-                <div className ="overlay">
-                <CardMenuPop/>
+                    <h3>{name}</h3>
+                    <button className="button" style={{cursor:"pointer"}}>
+                    <img src='/img/CardMenu.svg'/>
+                    </button>
+                    <div className ="overlay">
+                        <CardMenuPop/>
+                    </div>
                 </div>
-                </div>
-                
-                
-                
-                
                 <div className="majorBlock">
                     {major}
                 </div>
@@ -222,12 +217,9 @@ const SubjectList = (props)=>{
     })
     return(
         <ListStyle>
-            
             <div className = "list-group">
-                
                 {subjectList}
             </div>
-
         </ListStyle>
 
     )

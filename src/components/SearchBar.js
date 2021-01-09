@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+
+
 const SearchbarStyle = styled.div `
     width: 235px;
     height: 38px;
@@ -23,9 +25,10 @@ const SearchbarStyle = styled.div `
     
 `
 
-const Searchbar = ({text}) =>{
+const Searchbar = ({text,children, ...rest}) =>{
     return (
-        <SearchbarStyle>
+        <SearchbarStyle {...rest}> 
+        {children}
             <img src='/img/Search.svg'/>
             <input placeholder = {`${text}을 입력해주세요`}>
             </input>
