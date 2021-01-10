@@ -20,7 +20,7 @@ const UserListPageStyle = styled.div `
         width:1506px;
         display: flex;
         align-items:center;
-        justify-content: space-between;
+        justify-content: space-between; 
         margin-bottom:52px;
         &>div{
             display: flex;
@@ -34,9 +34,9 @@ const UserListPageStyle = styled.div `
 `
 
 const UserListPage = (props) =>{
-    const [value, setValue]=useState();
-    const onChange = (v) =>{
-        setValue(v);
+    const [searchValue, setSearchValue]=useState("");
+    const onChange = (e) =>{
+       setSearchValue(e.target.value);
     }
     return (
         <UserListPageStyle>
@@ -45,15 +45,15 @@ const UserListPage = (props) =>{
             <div className="header">
                 <div>
                 <h1>사용자 관리</h1>
-                <SearchBar searchValue={value} onChange={onChange} text = "학번"/>
+                <SearchBar onChange={onChange} text = "학번"/>
                 </div>
                 <Button primary>삭제</Button>
             </div>
-            <UserList value={value}/>
+            <UserList searchValue={searchValue}/>
             </div>
             
         </UserListPageStyle>
     )
 }
-
+ 
 export default UserListPage;
