@@ -9,7 +9,7 @@ const DropdownBoxStyle = styled.div `
     }
 `  
 
-const DropSemester = (props) =>{
+const DropSemester = ({onChange}) =>{
     const stateOptions = [
         {
             key: 1,
@@ -59,7 +59,7 @@ const DropSemester = (props) =>{
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} />
+            <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChange} />
         </DropdownBoxStyle>
         
     );
@@ -134,7 +134,7 @@ const DropType = (props) =>{
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} />
+        <Dropdown placeholder='전체' search selection options={stateOptions}/>
         </DropdownBoxStyle>
         
     );
@@ -183,18 +183,18 @@ h4{
 }
 `
 
-const DropDownBox = (props) =>{
-
+const DropDownBox = ({onChange}) =>{
+    
     return (
         <DropListStyle>
             <h4>학년 :</h4>
-            <DropSemester/>
+            <DropSemester onChange={onChange} />
             <h4>학과 :</h4>
-            <DropMajor/>
+            <DropMajor onChange={onChange} />
             <h4>이수구분 :</h4>
-            <DropType/>
+            <DropType onChange={onChange} />
             <h4>학년도 :</h4>
-            <DropEnteranceYear/>
+            <DropEnteranceYear onChange={onChange} />
         </DropListStyle>
     );
 }

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import styled from 'styled-components';
 import SideBar from '../components/SideBar';
 import SearchBar from '../components/SearchBar';
@@ -6,6 +6,7 @@ import Button from '../components/Button';
 import DropDownBox from '../components/DropDownBox';
 import SubjectList from '../components/SubjectList';
 import PlusModal from '../components/PlusModal';
+import { createSubject, getSubjects, removeSubject } from '../api/api';
 
 const SubjectStyle = styled.div `
     background: #f8f8f8;
@@ -30,7 +31,8 @@ const SubjectStyle = styled.div `
                 margin-right: 50px;
             }
         }
-        button{
+        .button-group{
+            
             outline: none;
             border: none;
             background: none;
@@ -50,12 +52,58 @@ const SubjectStyle = styled.div `
         
     }
 }
-    
-    
 `
-
 const SubjectPage = (props) =>{
-    const [isOpen, setIsOpen]=useState(false)
+    const [isOpen, setIsOpen]=useState(false);
+    const [input, setInput] = useState({
+        name : "",
+        major : "",
+        type : "",
+        semester: "",
+        credit : "",
+        enteranceYear : ""
+    })
+    const [subjects, setSubjects] = useState();
+    const [semester, setSemester] = useState();
+
+    useEffect(async()=> {
+        const res = await getSubjects();
+        setSubjects(res.data.data);
+    }, []);
+
+    const onChange = (e, {value}) => {
+        setSemester(value);
+    }
+
+    const onChangeInput = (e) => {
+        const { name , value } = e.target;
+        
+        setInput({
+            ...input,
+            [name] : value
+        });
+        console.log(input);
+    }
+
+    const onChangeDropdown = (e, {name , value}) => {
+        setInput({
+            ...input,
+            [name] : value
+        });
+    }
+
+    const onRemoveSubject = async(id) => {
+        await removeSubject(id);
+        const res = await getSubjects();
+        setSubjects(res.data.data);
+    }
+
+    const onCreateSubject = async() => {
+        await createSubject(input);
+        const res = await getSubjects();
+        setSubjects(res.data.data);
+    }
+
     return (
         <SubjectStyle>
             <SideBar user_name = "고윤정"/>
@@ -63,8 +111,6 @@ const SubjectPage = (props) =>{
             
             <div className = "header">
                 <h1>과목 관리</h1>
-                
-                
         
                 <div className="button-group">
                     <Button onClick={()=>setIsOpen(true)}>추가</Button>
@@ -72,14 +118,15 @@ const SubjectPage = (props) =>{
                 </div>
 
                 <PlusModal open={isOpen}
-                    onClose={()=>setIsOpen(false)}/>
+                    onCreateSubject={onCreateSubject}
+                    onClose={()=>setIsOpen(false)} onChange={onChangeInput} onChangeDropdown={onChangeDropdown}/>
             </div>
 
             <div className = "subheader">
             <SearchBar text ="과목명" style={{marginRight:'47px'}}/>
-            <DropDownBox/>
+            <DropDownBox onChange={onChange}/>
             </div>
-            <SubjectList/>
+            <SubjectList subjects={subjects} semester={semester} onRemoveSubject={onRemoveSubject}/>
             </div>
             
             {/*

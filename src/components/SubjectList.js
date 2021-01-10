@@ -8,6 +8,7 @@ const ListStyle = styled.div `
         //padding-left: 12px;
         //padding-right: 12px;
         .item{
+            cursor :pointer;
             position: relative;
             margin: 0px 12px 24px;
             width: 282px;
@@ -41,6 +42,15 @@ const ListStyle = styled.div `
                         left: -225px; */
                         display: block;
                         z-index: 100;
+                    }
+                    .button + .overlay:hover{
+                        position: absolute;
+                        top: 0px;
+                        left: 20px;
+                        /* top: -59px;
+                        left: -225px; */
+                        display: block;
+                        z-index: 100;     
                     }
                 }
             .majorBlock{
@@ -79,9 +89,6 @@ const ListStyle = styled.div `
             &> div+div{
                 margin-top: 20px;
             }
-            div:checked + label{
-
-            }
             
         }
         
@@ -111,6 +118,7 @@ const PopStyle = styled.div `
         display:flex;
         align-items: center;
         justify-content: space-between;
+        cursor: pointer;
 
         font-size: 15px;
         font-weight: bold;
@@ -118,7 +126,7 @@ const PopStyle = styled.div `
     }
     
 `
-const CardMenuPop = () =>{
+const CardMenuPop = ({onRemoveSubject, id}) =>{
 return(
     <PopStyle>
         <button>
@@ -126,56 +134,23 @@ return(
         수정
         </button>
 
-        <button>
-        <img src='/img/Trashbin.svg' style={{marginRight:"13px"}}/>
-        삭제
+        <button onClick={()=>onRemoveSubject(id)}>
+            <img src='/img/Trashbin.svg' style={{marginRight:"13px"}}/>
+            삭제
         </button>
     </PopStyle>
 );
 }
 
-const SubjectList = (props)=>{
+const SubjectList = ({subjects, semester = '', onRemoveSubject})=>{
     const [focusItem, setFocusItem] = useState([]);
-    const subjects = [
-        {
-        "name" : "소프트웨어 설계기초",
-        "major" : "소프트웨어",
-        "semester" : "6",
-        "type" : "전필",
-        "enteranceYear" : 2019
-        },
-        {
-        "name" : "소프트웨어 설계기초",
-        "major" : "디자인이노베이션",
-        "semester" : "6",
-        "type" : "전필",
-        "enteranceYear" : 2019
-        },
-        {
-        "name" : "소프트웨어 설계기초",
-        "major" : "컴퓨터공학",
-        "semester" : "6",
-        "type" : "전필",
-        "enteranceYear" : 2019
-        },
-        {
-        "name" : "소프트웨어 설계기초",
-        "major" : "소프트웨어학과",
-        "semester" : "6",
-        "type" : "전필",
-        "enteranceYear" : 2019
-        },
-        {
-        "name" : "소프트웨어 설계기초",
-        "major" : "소프트웨어학과",
-        "semester" : "6",
-        "type" : "전필",
-        "enteranceYear" : 2019
+    console.log(subjects, semester);
+    const subjectList = subjects && subjects.filter((s) => {
+        if ( s.semester === semester ||  semester === '전체' ){
+            return s;
         }
-    ] 
-
-    const subjectList = subjects.map((subject,i)=>{
-        const {name,major,semester,type} = subject;
+    }).map((subject,i)=>{
+        const {name,major,semester,type, _id} = subject;
         return(
             <div className="item" id={"a"+i} onClick ={(e)=>{
                 if(focusItem.find(f => f === i + 1)){
@@ -189,18 +164,14 @@ const SubjectList = (props)=>{
                 {border:"1px solid #6c63ff"}:{}}
             >
                 <div className="subjectName">
-                <h3>{name}</h3>
-                <button className="button">
-                <img src='/img/CardMenu.svg'/>
-                </button>
-                <div className ="overlay">
-                <CardMenuPop/>
+                    <h3>{name}</h3>
+                    <button className="button" style={{cursor:"pointer"}}>
+                    <img src='/img/CardMenu.svg'/>
+                    </button>
+                    <div className ="overlay">
+                        <CardMenuPop onRemoveSubject={onRemoveSubject} id={_id}/>
+                    </div>
                 </div>
-                </div>
-                
-                
-                
-                
                 <div className="majorBlock">
                     {major}
                 </div>
@@ -217,12 +188,9 @@ const SubjectList = (props)=>{
     })
     return(
         <ListStyle>
-            
             <div className = "list-group">
-                
                 {subjectList}
             </div>
-
         </ListStyle>
 
     )

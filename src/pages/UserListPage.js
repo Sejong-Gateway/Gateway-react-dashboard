@@ -1,9 +1,10 @@
-import React from 'react';
+import React , {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import SideBar from '../components/SideBar';
 import UserList from '../components/UserList';
 import SearchBar from '../components/SearchBar';
+import { getUsers } from '../api/api';
 
 const UserListPageStyle = styled.div `
     background: #f8f8f8;
@@ -20,7 +21,7 @@ const UserListPageStyle = styled.div `
         width:1506px;
         display: flex;
         align-items:center;
-        justify-content: space-between;
+        justify-content: space-between; 
         margin-bottom:52px;
         &>div{
             display: flex;
@@ -34,7 +35,17 @@ const UserListPageStyle = styled.div `
 `
 
 const UserListPage = (props) =>{
-    
+    const [searchValue, setSearchValue]=useState("");
+    const [users, setUsers] = useState([]);
+    const onChange = (e) =>{
+       setSearchValue(e.target.value);
+    }
+
+    useEffect(async()=> {
+        const res = await getUsers();
+        setUsers(res.data.data);
+    }, []);
+
     return (
         <UserListPageStyle>
             <SideBar user_name = "고윤정"/>
@@ -42,16 +53,15 @@ const UserListPage = (props) =>{
             <div className="header">
                 <div>
                 <h1>사용자 관리</h1>
-                <SearchBar text = "학번"/>
+                <SearchBar onChange={onChange} text = "학번"/>
                 </div>
-                <Button
-                name = "삭제" primary></Button>
+                <Button primary>삭제</Button>
             </div>
-            <UserList/>
+            <UserList searchValue={searchValue} users={users}/>
             </div>
             
         </UserListPageStyle>
     )
 }
-
+ 
 export default UserListPage;
