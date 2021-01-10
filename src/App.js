@@ -39,7 +39,7 @@ function App() {
   return (
     <>
     <GlobalStyle/>
-    <Route exact component = {LogInPage} path ='/logIn'></Route>
+    <Route exact component = {LogInPage} path ='/'></Route>
     <Route exact component = {UserListPage} path ='/user'></Route>
     <Route exact component = {SubjectPage} path ='/subject'></Route>
     </>

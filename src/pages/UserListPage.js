@@ -1,9 +1,10 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import SideBar from '../components/SideBar';
 import UserList from '../components/UserList';
 import SearchBar from '../components/SearchBar';
+import { getUsers } from '../api/api';
 
 const UserListPageStyle = styled.div `
     background: #f8f8f8;
@@ -35,9 +36,16 @@ const UserListPageStyle = styled.div `
 
 const UserListPage = (props) =>{
     const [searchValue, setSearchValue]=useState("");
+    const [users, setUsers] = useState([]);
     const onChange = (e) =>{
        setSearchValue(e.target.value);
     }
+
+    useEffect(async()=> {
+        const res = await getUsers();
+        setUsers(res.data.data);
+    }, []);
+
     return (
         <UserListPageStyle>
             <SideBar user_name = "고윤정"/>
@@ -49,7 +57,7 @@ const UserListPage = (props) =>{
                 </div>
                 <Button primary>삭제</Button>
             </div>
-            <UserList searchValue={searchValue}/>
+            <UserList searchValue={searchValue} users={users}/>
             </div>
             
         </UserListPageStyle>

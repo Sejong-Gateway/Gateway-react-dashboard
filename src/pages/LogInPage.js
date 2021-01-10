@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { login } from '../api/api';
 
 
 const LogInPageStyle = styled.div `
@@ -61,6 +63,26 @@ const LogInBlock = styled.div `
 `
 
 const LogInPage = () =>{
+    const history = useHistory();
+    const [input, setInput] = useState({
+        studentId : "",
+        user_pw : "",
+    })
+    const onClickLogin = async() => {
+        const res = await login(input);
+        sessionStorage.setItem('token',res.data.data.token);
+        if (res.data.status === 200){
+            history.push('/user');
+        }
+    }
+    const onChange = (e) => {
+        const {name, value} = e.target;
+        setInput({
+            ...input,
+            [name] : value,
+        });
+        
+    }
     return (
         <>
         <LogInPageStyle>
@@ -71,11 +93,11 @@ const LogInPage = () =>{
         <img src='/img/GatewayLogoText.svg'/>
         <h1>로그인</h1>
         <h2>아이디</h2>
-        <input placeholder='아이디를 입력해주세요'/>
+        <input placeholder='아이디를 입력해주세요' onChange={onChange} name="studentId"/>
         <h2>비밀번호</h2>
-        <input placeholder='비밀번호를 입력해주세요'/>
+        <input placeholder='비밀번호를 입력해주세요' onChange={onChange} name="user_pw" type="password"/>
 
-        <LogInBlock>로그인</LogInBlock>
+        <LogInBlock onClick={onClickLogin} >로그인</LogInBlock>
         </WhiteBlock>
         </LogInPageStyle>
         

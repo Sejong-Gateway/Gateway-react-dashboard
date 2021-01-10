@@ -87,48 +87,10 @@ const ListStyle = styled.div `
 `
 
 
-const UserList = ({searchValue})=>{
-    console.log(searchValue);
+const UserList = ({searchValue, users})=>{
     const [focusItem, setFocusItem] = useState([]);
-    const users = [
-        {
-            studentId : "19011335",
-            major : "소프트웨어학과",
-            semester : 6,
-            createdAt : "2020-12-05"
-        },
-        {
-            studentId : "19011296",
-            major : "디자인이노베이션",
-            semester : 6,
-            createdAt : "2020-12-05"
-        },
-        {
-            studentId : "16011296",
-            major : "컴퓨터공학",
-            semester : 6,
-            createdAt : "2020-12-05"
-        },
-        {
-            studentId : "19011335",
-            major : "소프트웨어",
-            semester : 4,
-            createdAt : "2020-12-05"
-        },
-        {
-            studentId : "20011296",
-            major : "컴퓨터공학",
-            semester : 3,
-            createdAt : "2020-12-05"
-        }
-    ]  
-
-    const userList = users.map((user, i)=>{
+    const userList = users.filter(user => user.studentId.indexOf(searchValue) !== -1).map((user, i)=>{
         const {studentId, major,semester,createdAt} = user;
-        if(searchValue===users.studentId){
-            
-        }
-        
         return(
             <div className="item" 
             style = {focusItem.find((focus)=> focus ===i+1)? 

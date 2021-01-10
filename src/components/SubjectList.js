@@ -43,6 +43,15 @@ const ListStyle = styled.div `
                         display: block;
                         z-index: 100;
                     }
+                    .button + .overlay:hover{
+                        position: absolute;
+                        top: 0px;
+                        left: 20px;
+                        /* top: -59px;
+                        left: -225px; */
+                        display: block;
+                        z-index: 100;     
+                    }
                 }
             .majorBlock{
                 padding: 0.25rem 1rem;
@@ -117,7 +126,7 @@ const PopStyle = styled.div `
     }
     
 `
-const CardMenuPop = () =>{
+const CardMenuPop = ({onRemoveSubject, id}) =>{
 return(
     <PopStyle>
         <button>
@@ -125,61 +134,23 @@ return(
         수정
         </button>
 
-        <button>
-        <img src='/img/Trashbin.svg' style={{marginRight:"13px"}}/>
-        삭제
+        <button onClick={()=>onRemoveSubject(id)}>
+            <img src='/img/Trashbin.svg' style={{marginRight:"13px"}}/>
+            삭제
         </button>
     </PopStyle>
 );
 }
 
-const SubjectList = (props)=>{
+const SubjectList = ({subjects, semester = '', onRemoveSubject})=>{
     const [focusItem, setFocusItem] = useState([]);
-    const subjects = [
-        {
-        "name" : "소프트웨어 설계기초",
-        "major" : "소프트웨어",
-        "semester" : "6",
-        "type" : "전필",
-        "enteranceYear" : 2019,
-        "credit": "3"
-        },
-        {
-        "name" : "소프트웨어 설계기초",
-        "major" : "디자인이노베이션",
-        "semester" : "6",
-        "type" : "전필",
-        "enteranceYear" : 2019,
-        "credit": "4"
-        },
-        {
-        "name" : "소프트웨어 설계기초",
-        "major" : "컴퓨터공학",
-        "semester" : "6",
-        "type" : "전필",
-        "enteranceYear" : 2019,
-        "credit": "3"
-        },
-        {
-        "name" : "소프트웨어 설계기초",
-        "major" : "소프트웨어학과",
-        "semester" : "6",
-        "type" : "전필",
-        "enteranceYear" : 2019,
-        "credit": "3"
-        },
-        {
-        "name" : "소프트웨어 설계기초",
-        "major" : "소프트웨어학과",
-        "semester" : "6",
-        "type" : "전필",
-        "enteranceYear" : 2019,
-        "credit": "3"
+    console.log(subjects, semester);
+    const subjectList = subjects && subjects.filter((s) => {
+        if ( s.semester === semester ||  semester === '전체' ){
+            return s;
         }
-    ] 
-
-    const subjectList = subjects.map((subject,i)=>{
-        const {name,major,semester,type} = subject;
+    }).map((subject,i)=>{
+        const {name,major,semester,type, _id} = subject;
         return(
             <div className="item" id={"a"+i} onClick ={(e)=>{
                 if(focusItem.find(f => f === i + 1)){
@@ -198,7 +169,7 @@ const SubjectList = (props)=>{
                     <img src='/img/CardMenu.svg'/>
                     </button>
                     <div className ="overlay">
-                        <CardMenuPop/>
+                        <CardMenuPop onRemoveSubject={onRemoveSubject} id={_id}/>
                     </div>
                 </div>
                 <div className="majorBlock">

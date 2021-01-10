@@ -68,7 +68,7 @@ const PlusBlock = styled.div `
     color:white;
     margin-top: 3.125rem;
 `
-const PlusModal  = ({open, onClose}) =>{
+const PlusModal  = ({open, onClose, onChange, onChangeDropdown, onCreateSubject}) =>{
     if(!open) return null
     return(
         <>
@@ -81,14 +81,13 @@ const PlusModal  = ({open, onClose}) =>{
             onClick={onClose}>
             <img src='/img/ModalExit.svg'/>
             </button>
-            
             <h1>과목 추가</h1>
             <h2 style={{marginBottom:'0.4375rem'}}>과목 이름</h2>
-            <input placeholder='과목 이름을 입력해주세요'/>
+            <input placeholder='과목 이름을 입력해주세요' name="name" onChange={onChange} />
             <h2 style={{marginBottom:'0.4375rem'}}>학점</h2>
-            <input placeholder='학점을 입력해주세요'/>
-            <DropDownList/>
-            <PlusBlock>추가하기</PlusBlock>
+            <input placeholder='학점을 입력해주세요' name="credit" onChange={onChange}/>
+            <DropDownList onChangeDropdown={onChangeDropdown}/>
+            <PlusBlock onClick={onCreateSubject}>추가하기</PlusBlock>
             
             </PlusModalStyle>
        </>
@@ -109,18 +108,18 @@ const DropDownListStyle = styled.div `
         }
     }
 `
-const DropDownList = () =>{
+const DropDownList = ({onChangeDropdown}) =>{
     return(
         <DropDownListStyle>
         <div className="dropContainer">
         <div className="drop">
         <h2>학년</h2>
-        <DropSemester/>
+        <DropSemester onChangeDropdown={onChangeDropdown}/>
         </div>
         
         <div className="drop">
         <h2>학과</h2>
-        <DropMajor/>
+        <DropMajor onChangeDropdown={onChangeDropdown}/>
         </div>
         </div>
 
@@ -128,11 +127,11 @@ const DropDownList = () =>{
         style={{marginTop:'33px'}}>
         <div className="drop">
         <h2>이수 구분</h2>
-        <DropType/>
+        <DropType onChangeDropdown={onChangeDropdown}/>
         </div>
         <div className="drop">
         <h2>학년도</h2>
-        <DropEnteranceYear/>
+        <DropEnteranceYear onChangeDropdown={onChangeDropdown}/>
         </div>
         
         </div>
@@ -147,7 +146,7 @@ const DropdownBoxStyle = styled.div `
     }
 `  
 
-const DropSemester = (props) =>{
+const DropSemester = ({onChangeDropdown}) =>{
     const stateOptions = [
         {
             key: 1,
@@ -197,12 +196,12 @@ const DropSemester = (props) =>{
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} />
+        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChangeDropdown} name='semester' />
         </DropdownBoxStyle>
         
     );
 }
-const DropMajor = (props) =>{
+const DropMajor = ({onChangeDropdown}) =>{
     const stateOptions = [
         {
             key: 1,
@@ -227,12 +226,12 @@ const DropMajor = (props) =>{
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} />
+        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChangeDropdown} name='major'/>
         </DropdownBoxStyle>
         
     );
 }
-const DropType = (props) =>{
+const DropType = ({onChangeDropdown}) =>{
     const stateOptions = [
         {
             key: 1,
@@ -272,12 +271,12 @@ const DropType = (props) =>{
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} />
+        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChangeDropdown} name="type" />
         </DropdownBoxStyle>
         
     );
 }
-const DropEnteranceYear = (props) =>{
+const DropEnteranceYear = ({onChangeDropdown}) =>{
     const stateOptions = [
         {
             key: 1,
@@ -302,7 +301,7 @@ const DropEnteranceYear = (props) =>{
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} />
+        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChangeDropdown} name="enteranceYear"/>
         </DropdownBoxStyle>
         
     );
