@@ -64,7 +64,7 @@ const DropSemester = ({onChange}) =>{
         
     );
 }
-const DropMajor = (props) =>{
+const DropMajor = ({onChange}) =>{
     const stateOptions = [
         {
             key: 1,
@@ -74,27 +74,27 @@ const DropMajor = (props) =>{
         {
             key: 2,
             text: "디자인이노베이션",
-            value: "디자인이노베이션"
+            value: "디자인이노베이션학과"
         },
         {
             key: 3,
             text:"소프트웨어",
-            value: "소프트웨어"
+            value: "소프트웨어학과"
         },
         {
             key: 4,
             text:"컴퓨터공학",
-            value: "컴퓨터공학"
+            value: "컴퓨터공학과"
         }
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} />
+        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChange}/>
         </DropdownBoxStyle>
         
     );
 }
-const DropType = (props) =>{
+const DropType = ({onChange}) =>{
     const stateOptions = [
         {
             key: 1,
@@ -104,22 +104,22 @@ const DropType = (props) =>{
         {
             key: 2,
             text: "전필",
-            value: "전필"
+            value: "전공필수"
         },
         {
             key: 3,
             text:"전선",
-            value: "전선"
+            value: "전공선택"
         },
         {
             key: 4,
             text:"교필",
-            value: "교필"
+            value: "교양필수"
         },
         {
             key: 5,
             text:"교선1",
-            value: "교선1"
+            value: "교양선택1"
         },
         {
             key: 6,
@@ -130,41 +130,16 @@ const DropType = (props) =>{
             key: 7,
             text:"공학",
             value: "공학"
+        },
+        {
+            key: 8,
+            text:"기교",
+            value: "전공기초교양"
         }
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions}/>
-        </DropdownBoxStyle>
-        
-    );
-}
-const DropEnteranceYear = (props) =>{
-    const stateOptions = [
-        {
-            key: 1,
-            text: "전체",
-            value: "전체"
-        },
-        {
-            key: 2,
-            text: "2019",
-            value: "2019"
-        },
-        {
-            key: 3,
-            text:"2018",
-            value: "2018"
-        },
-        {
-            key: 4,
-            text:"2016",
-            value: "2016"
-        }
-    ]
-    return(
-        <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} />
+        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChange}/>
         </DropdownBoxStyle>
         
     );
@@ -193,8 +168,6 @@ const DropDownBox = ({onChange}) =>{
             <DropMajor onChange={onChange} />
             <h4>이수구분 :</h4>
             <DropType onChange={onChange} />
-            <h4>학년도 :</h4>
-            <DropEnteranceYear onChange={onChange} />
         </DropListStyle>
     );
 }

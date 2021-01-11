@@ -16,3 +16,5 @@ export const updateSubject = (subject, id) => api.put(`subject/${id}`, subject);
 export const removeSubject = (id) => api.delete(`subject/${id}`);
 
 export const login = (user) => api.post(`/user/login`, user);
+
+// export const logout

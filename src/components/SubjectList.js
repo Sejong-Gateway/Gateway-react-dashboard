@@ -127,9 +127,10 @@ const PopStyle = styled.div `
     
 `
 const CardMenuPop = ({onRemoveSubject, id}) =>{
+    const [isOpen, setIsOpen]=useState(false);
 return(
     <PopStyle>
-        <button>
+        <button onClick={()=>setIsOpen(true)} >
         <img src='/img/Correction.svg' style={{marginRight:"13px"}}/>
         수정
         </button>
@@ -142,13 +143,24 @@ return(
 );
 }
 
-const SubjectList = ({subjects, semester = '', onRemoveSubject})=>{
+const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSubject, searchValue})=>{
     const [focusItem, setFocusItem] = useState([]);
-    console.log(subjects, semester);
-    const subjectList = subjects && subjects.filter((s) => {
-        if ( s.semester === semester ||  semester === '전체' ){
+    
+    const subjectList = subjects && subjects.filter((s)=>{
+        // if(s.name.indexOf(searchValue) !== -1){
+        //     return s;
+        // }
+        if ( (s.semester === semester ||  semester === '전체')
+        && (s.major===major || major === '전체')
+        && (s.type===type || type === '전체')){
             return s;
         }
+        // else if(s.major===major || major === '전체'){
+        //     return s.major;
+        // }
+        // if(s.type===type || type === '전체'){
+        //     return s.type;
+        // }
     }).map((subject,i)=>{
         const {name,major,semester,type, _id} = subject;
         return(
@@ -170,6 +182,7 @@ const SubjectList = ({subjects, semester = '', onRemoveSubject})=>{
                     </button>
                     <div className ="overlay">
                         <CardMenuPop onRemoveSubject={onRemoveSubject} id={_id}/>
+                        
                     </div>
                 </div>
                 <div className="majorBlock">

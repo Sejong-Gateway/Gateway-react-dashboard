@@ -51,7 +51,7 @@ const Sidebarblock = styled.div`
 const SideBar = ({ user_name}) => {
  
   return (
-    <Sidebarblock user_name={user_name}>
+    <Sidebarblock>
       <div className = "top">
       <div className = "logo">
         <img src='/img/GatewayLogo.svg'/>
@@ -59,7 +59,7 @@ const SideBar = ({ user_name}) => {
 
         <div className = "profileMain-box">
         <img src='/img/ProfileMain.svg'/>
-        {user_name}
+        관리자
         </div>
         <SideBarClick/>
       </div>

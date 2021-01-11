@@ -89,7 +89,8 @@ const ListStyle = styled.div `
 
 const UserList = ({searchValue, users})=>{
     const [focusItem, setFocusItem] = useState([]);
-    const userList = users.filter(user => user.studentId.indexOf(searchValue) !== -1).map((user, i)=>{
+    const onListCheck = useRef();
+    const userList = users.filter(user => user.admin===false && user.studentId.indexOf(searchValue) !== -1).map((user, i)=>{
         const {studentId, major,semester,createdAt} = user;
         return(
             <div className="item" 
@@ -104,7 +105,9 @@ const UserList = ({searchValue, users})=>{
                         else{
                             setFocusItem([...focusItem,i+1]);
                         }
-                    }}/>
+                    }}
+                    ref = {onListCheck} //useref
+                    />
                     <label htmlFor = {"a"+i}></label>
                     
                 </div>
@@ -131,7 +134,7 @@ const UserList = ({searchValue, users})=>{
                 onChange={(e)=>{
                     if(e.target.checked===true){
                         setFocusItem([...Array(users.length+1).keys()]);
-                        //useRef()
+                        
                     }
                     else{
                         setFocusItem([]);
