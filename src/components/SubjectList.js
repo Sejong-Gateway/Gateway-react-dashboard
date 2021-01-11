@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import styled from 'styled-components';
+import Modal from './Modal';
 
 const ListStyle = styled.div `
     .list-group{
@@ -126,11 +127,12 @@ const PopStyle = styled.div `
     }
     
 `
-const CardMenuPop = ({onRemoveSubject, id}) =>{
-    const [isOpen, setIsOpen]=useState(false);
+const CardMenuPop = ({ onRemoveSubject, id}) =>{
+    // onClick={()=>onOpen(true)} 
 return(
     <PopStyle>
-        <button onClick={()=>setIsOpen(true)} >
+        
+        <button>
         <img src='/img/Correction.svg' style={{marginRight:"13px"}}/>
         수정
         </button>
@@ -145,7 +147,11 @@ return(
 
 const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSubject, searchValue})=>{
     const [focusItem, setFocusItem] = useState([]);
-    
+
+    //modal
+    const [isOpen, setIsOpen]=useState(false);
+    // const onOpen = setIsOpen(true);
+
     const subjectList = subjects && subjects.filter((s)=>{
         // if(s.name.indexOf(searchValue) !== -1){
         //     return s;
@@ -204,6 +210,7 @@ const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSu
             <div className = "list-group">
                 {subjectList}
             </div>
+            <Modal text="수정하기" open={isOpen}  onClose={()=>setIsOpen(false)}/>
         </ListStyle>
 
     )

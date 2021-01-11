@@ -134,7 +134,7 @@ const UserList = ({searchValue, users})=>{
                 onChange={(e)=>{
                     if(e.target.checked===true){
                         setFocusItem([...Array(users.length+1).keys()]);
-                        
+                        // onListCheck.style({background: url(${'/img/Check.svg'}) })
                     }
                     else{
                         setFocusItem([]);

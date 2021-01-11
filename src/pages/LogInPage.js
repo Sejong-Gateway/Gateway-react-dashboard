@@ -60,7 +60,6 @@ const LogInBlock = styled.div `
     font-weight: bold;
     color:white;
     margin-top: 20px;
-   
 `
 
 const LogInPage = () =>{

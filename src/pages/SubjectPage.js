@@ -5,7 +5,7 @@ import SearchBar from '../components/SearchBar';
 import Button from '../components/Button';
 import DropDownBox from '../components/DropDownBox';
 import SubjectList from '../components/SubjectList';
-import PlusModal from '../components/PlusModal';
+import Modal from '../components/Modal';
 import { createSubject, getSubjects, removeSubject } from '../api/api';
 
 const SubjectStyle = styled.div `
@@ -133,7 +133,7 @@ const SubjectPage = (props) =>{
                     <Button primary>삭제</Button>
                 </div>
 
-                <PlusModal open={isOpen}
+                <Modal text = "추가하기" open={isOpen}
                     onCreateSubject={onCreateSubject}
                     onClose={()=>setIsOpen(false)} onChange={onChangeInput} onChangeDropdown={onChangeDropdown}/>
             </div>
