@@ -68,6 +68,7 @@ const LogInPage = () =>{
         studentId : "",
         user_pw : "",
     })
+
     const onClickLogin = async() => {
         const res = await login(input);
         sessionStorage.setItem('token',res.data.data.token);

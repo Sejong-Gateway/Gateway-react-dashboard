@@ -7,6 +7,8 @@ const api = axios.create({
 //유저관리
 export const getUsers = () => api.get(`user`);
 
+export const removeUser = (id) => api.delete(`user/${id}`);
+
 export const createSubject = (subject) => api.post(`subject`, subject);
 
 export const getSubjects = () => api.get(`subject`);
