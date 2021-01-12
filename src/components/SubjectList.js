@@ -127,12 +127,12 @@ const PopStyle = styled.div `
     }
     
 `
-const CardMenuPop = ({ onRemoveSubject, id}) =>{
+const CardMenuPop = ({onOpen, onRemoveSubject, id}) =>{
     // onClick={()=>onOpen(true)} 
 return(
     <PopStyle>
         
-        <button>
+        <button onClick={()=>onOpen()} >
         <img src='/img/Correction.svg' style={{marginRight:"13px"}}/>
         수정
         </button>
@@ -150,7 +150,7 @@ const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSu
 
     //modal
     const [isOpen, setIsOpen]=useState(false);
-    // const onOpen = setIsOpen(true);
+    const onOpen = () => setIsOpen(true);
 
     const subjectList = subjects && subjects.filter((s)=>{
         // if(s.name.indexOf(searchValue) !== -1){
@@ -187,7 +187,7 @@ const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSu
                     <img src='/img/CardMenu.svg'/>
                     </button>
                     <div className ="overlay">
-                        <CardMenuPop onRemoveSubject={onRemoveSubject} id={_id}/>
+                        <CardMenuPop onOpen={onOpen} onRemoveSubject={onRemoveSubject} id={_id}/>
                         
                     </div>
                 </div>

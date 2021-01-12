@@ -106,9 +106,9 @@ const UserList = ({searchValue, users})=>{
                             setFocusItem([...focusItem,i+1]);
                         }
                     }}
-                    ref = {onListCheck} //useref
+                    //ref = {onListCheck} //useref
                     />
-                    <label htmlFor = {"a"+i}></label>
+                    <label ref = {onListCheck} htmlFor = {"a"+i}></label>
                     
                 </div>
                 <div>
@@ -134,7 +134,9 @@ const UserList = ({searchValue, users})=>{
                 onChange={(e)=>{
                     if(e.target.checked===true){
                         setFocusItem([...Array(users.length+1).keys()]);
-                        // onListCheck.style({background: url(${'/img/Check.svg'}) })
+                        // onListCheck.current()
+                        // console.log(onListCheck.current);
+                        
                     }
                     else{
                         setFocusItem([]);
