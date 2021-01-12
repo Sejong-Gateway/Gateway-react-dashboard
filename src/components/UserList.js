@@ -89,7 +89,7 @@ const ListStyle = styled.div `
 
 const UserList = ({searchValue, users})=>{
     const [focusItem, setFocusItem] = useState([]);
-    const onListCheck = useRef();
+    const onListCheck = useRef([]);
     const userList = users.filter(user => user.admin===false && user.studentId.indexOf(searchValue) !== -1).map((user, i)=>{
         const {studentId, major,semester,createdAt} = user;
         return(
@@ -98,6 +98,7 @@ const UserList = ({searchValue, users})=>{
             {border:"1px solid #6c63ff"}:{}}>
                 <div className = "checkbox-container">
                     <input id={"a"+i} type="checkbox"
+                    ref={el => onListCheck.current[i] = el} 
                     onChange = {(e)=>{
                         if(e.target.checked===false){
                             setFocusItem([...focusItem.filter((focus)=> focus !== i+1)]);
@@ -108,7 +109,7 @@ const UserList = ({searchValue, users})=>{
                     }}
                     //ref = {onListCheck} //useref
                     />
-                    <label ref = {onListCheck} htmlFor = {"a"+i}></label>
+                    <label htmlFor = {"a"+i}></label>
                     
                 </div>
                 <div>
@@ -134,12 +135,15 @@ const UserList = ({searchValue, users})=>{
                 onChange={(e)=>{
                     if(e.target.checked===true){
                         setFocusItem([...Array(users.length+1).keys()]);
-                        // onListCheck.current()
-                        // console.log(onListCheck.current);
-                        
+                        onListCheck.current.forEach((v, i) => {
+                            onListCheck.current[i].checked = true;    
+                        });
                     }
                     else{
                         setFocusItem([]);
+                        onListCheck.current.forEach((v, i) => {
+                            onListCheck.current[i].checked = false;    
+                        });
                     }
                 }}
                 />
