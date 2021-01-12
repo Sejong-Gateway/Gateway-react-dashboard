@@ -153,20 +153,17 @@ const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSu
     const onOpen = () => setIsOpen(true);
 
     const subjectList = subjects && subjects.filter((s)=>{
-        // if(s.name.indexOf(searchValue) !== -1){
-        //     return s;
-        // }
-        if ( (s.semester === semester ||  semester === '전체')
-        && (s.major===major || major === '전체')
-        && (s.type===type || type === '전체')){
-            return s;
+        
+        if(s.name.indexOf(searchValue) !== -1){
+            console.log(major);
+            if(s.semester === semester || semester === '전체' || !semester ){ 
+                if ( s.major === major  || major === '전체' || major === '' ){
+                    if ( s.type === type  || type === '전체' || type === '' ){
+                        return s;
+                    }
+                }
+            }
         }
-        // else if(s.major===major || major === '전체'){
-        //     return s.major;
-        // }
-        // if(s.type===type || type === '전체'){
-        //     return s.type;
-        // }
     }).map((subject,i)=>{
         const {name,major,semester,type, _id} = subject;
         return(
