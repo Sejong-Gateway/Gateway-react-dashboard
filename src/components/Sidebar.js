@@ -5,10 +5,10 @@ import SideBarClick from './SideBarClick';
 
 const Sidebarblock = styled.div`
 
-    min-width: 310px;
+    min-width: 19.375rem;
     min-height: 100vh;
-    //padding: 100px 79px 52px 0;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    //padding: 6.25rem 4.9375rem 3.25rem 0;
+    box-shadow: 0 0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.16);
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -17,30 +17,30 @@ const Sidebarblock = styled.div`
     
     .top{
       .logo{
-      margin: 70px 110px 0px;
+      margin: 4.375rem 6.875rem 0rem;
     }
     .profileMain-box{
-      min-height: 123px;
+      min-height: 7.6875rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
       justify-content: space-between;
-      margin: 83px 102px 0px;
+      margin: 5.1875rem 6.375rem 0rem;
     }
   }
     
     
     .bottom{
-      min-width: 137px;
+      min-width: 8.5625rem;
       display:flex;
       align-items:center;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
       color: #6c63ff;
       justify-content: space-between;
-      margin: 0px 81px 52px;
+      margin: 0rem 5.0625rem 3.25rem;
     }
     
     

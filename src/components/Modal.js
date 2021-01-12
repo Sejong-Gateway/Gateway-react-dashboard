@@ -25,7 +25,7 @@ const PlusModalStyle = styled.div `
     left: 50%;
     transform: translate(-50%, -50%);
     width:540px;
-    padding: 33px 86px 57px;
+    padding: 2.0625rem 5.375rem 3.5625rem;
     border-radius: 0.625rem;
     background-color: #ffffff;
     display: flex;
@@ -43,7 +43,7 @@ const PlusModalStyle = styled.div `
             outline: none;
             border: none;
             border-bottom: 0.125rem solid #6c63ff;
-            width: 368px;
+            width: 23rem;
             font-size: 0.9375rem;
             margin-bottom: 2.0625rem;
             padding-bottom: 0.5rem;
@@ -55,7 +55,7 @@ const PlusModalStyle = styled.div `
         }
 `
 const PlusBlock = styled.div `
-    width: 368px;
+    width: 23rem;
     height: 2.4375rem;
     border-radius: 0.25rem;
     background-color: #6c63ff;
@@ -78,7 +78,7 @@ const Modal  = ({open, onClose, onChange, onChangeDropdown, onCreateSubject, tex
             <PlusModalStyle>
             
             <button 
-            style={{marginLeft:'345px', marginBottom:'0.5625rem',cursor: 'pointer'}}
+            style={{marginLeft:'21.5625rem', marginBottom:'0.5625rem',cursor: 'pointer'}}
             onClick={onClose}>
             <img src='/img/ModalExit.svg'/>
             </button>
@@ -125,7 +125,7 @@ const DropDownList = ({onChangeDropdown}) =>{
         </div>
 
         <div className="dropContainer"
-        style={{marginTop:'33px'}}>
+        style={{marginTop:'2.0625rem'}}>
         <div className="drop">
         <h2>이수 구분</h2>
         <DropType onChangeDropdown={onChangeDropdown}/>
@@ -143,7 +143,7 @@ const DropDownList = ({onChangeDropdown}) =>{
 const DropdownBoxStyle = styled.div `
     .ui.selection.dropdown{
         border: solid 0.0625rem #6d69fb;
-        min-width: 11em;
+        min-width: 11rem;
     }
 `  
 
@@ -266,8 +266,8 @@ const DropType = ({onChangeDropdown}) =>{
         },
         {
             key: 7,
-            text:"공학",
-            value: "공학"
+            text:"기교",
+            value: "전공기초교양"
         }
     ]
     return(

@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 
 const SearchbarStyle = styled.div `
-    width: 235px;
-    height: 38px;
+    width: 14.6875rem;
+    height: 2.375rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 15px;
+    font-size: 0.9375rem;
     color: #707070;
-    padding: 11px 20px;
-    border-radius: 19px;
+    padding: 0.6875rem 1.25rem;
+    border-radius: 1.1875rem;
     background-color: #ffffff;
 
     input{
@@ -19,7 +19,7 @@ const SearchbarStyle = styled.div `
         border: none;
         ::placeholder{
         color:#dedede;
-        font-size: 12px;
+        font-size: 0.75rem;
         }
     }
     

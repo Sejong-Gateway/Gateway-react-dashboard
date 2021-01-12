@@ -13,10 +13,10 @@ const LogInPageStyle = styled.div `
     justify-content: center;
 `
 const WhiteBlock = styled.div `
-        width: 409px;
-        padding: 60px 71px;
-        border-radius: 10px;
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        width: 25.5625rem;
+        padding: 3.75rem 4.4375rem;
+        border-radius: 0.625rem;
+        box-shadow: 0 0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.16);
         background-color: #ffffff;
         display: flex;
         flex-direction: column;
@@ -25,41 +25,41 @@ const WhiteBlock = styled.div `
         input{
             outline: none;
             border: none;
-            border-bottom: 2px solid #6c63ff;
-            width: 267px;
-            font-size: 15px;
-            margin-bottom: 30px;
-            padding-bottom: 8px;
+            border-bottom: 0.125rem solid #6c63ff;
+            width: 16.6875rem;
+            font-size: 0.9375rem;
+            margin-bottom: 1.875rem;
+            padding-bottom: 0.5rem;
 
             ::placeholder{
-                font-size: 12px;
+                font-size: 0.75rem;
                 color: #dedede
             }
         }
         h1{
-        margin-top: 59px;
-        margin-bottom: 41px;
+        margin-top: 3.6875rem;
+        margin-bottom: 2.5625rem;
         
         }
         h2{
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
         }
         
 `
 const LogInBlock = styled.div `
-    width: 267px;
-    height: 39px;
-    border-radius: 4px;
+    width: 16.6875rem;
+    height: 2.4375rem;
+    border-radius: 0.25rem;
     background-color: #6c63ff;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
 
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     color:white;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 `
 
 const LogInPage = () =>{
@@ -89,7 +89,7 @@ const LogInPage = () =>{
         <LogInPageStyle>
         <WhiteBlock>
         <img src='/img/GatewayLogo.svg' 
-        style={{marginBottom: '10px'}}
+        style={{marginBottom: '0.625rem'}}
         />
         <img src='/img/GatewayLogoText.svg'/>
         <h1>로그인</h1>

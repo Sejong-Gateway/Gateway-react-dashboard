@@ -9,24 +9,24 @@ const SideBarClickUserStyle = styled.div `
     }
     .userList-box{
         color: #6c63ff;
-        min-width: 137px;
+        min-width: 8.5625rem;
         display:flex;
         align-items:center;
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: bold;
         
         justify-content: space-between;
-        margin: 96px 79px 0px;
+        margin: 6rem 4.9375rem 0rem;
     }
 
     .subjectList-box{
-      min-width: 137px;
+      min-width: 8.5625rem;
       display:flex;
       align-items:center;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
       justify-content: space-between;
-      margin: 46px 79px 0px;
+      margin: 2.875rem 4.9375rem 0rem;
     }
 `
 
@@ -36,25 +36,25 @@ const SideBarClickSubjectStyle = styled.div `
     }
     .userList-box{
 
-        min-width: 137px;
+        min-width: 8.5625rem;
         display:flex;
         align-items:center;
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: bold;
         
         justify-content: space-between;
-        margin: 96px 79px 0px;
+        margin: 6rem 4.9375rem 0rem;
     }
 
     .subjectList-box{
       color: #6c63ff;
-      min-width: 137px;
+      min-width: 8.5625rem;
       display:flex;
       align-items:center;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
       justify-content: space-between;
-      margin: 46px 79px 0px;
+      margin: 2.875rem 4.9375rem 0rem;
     }
 `
 

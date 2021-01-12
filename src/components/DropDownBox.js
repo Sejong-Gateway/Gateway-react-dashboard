@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const DropdownBoxStyle = styled.div `
     .ui.selection.dropdown{
         min-width: 11rem;
-        margin-right: 30px;
+        margin-right: 1.875rem;
     }
 `  
 
@@ -127,7 +127,7 @@ const DropType = ({onChange}) =>{
             value: "교선2"
         },
         {
-            key: 8,
+            key: 7,
             text:"기교",
             value: "전공기초교양"
         }
@@ -142,14 +142,14 @@ const DropType = ({onChange}) =>{
 const DropListStyle = styled.div `
 display:flex;
 .dropdown{
-    width: 98px;
-    border-radius: 19px;
-    margin-right: 30px;
+    width: 6.125rem;
+    border-radius: 1.1875rem;
+    margin-right: 1.875rem;
 }
 
 h4{
-    padding: 9px;
-    margin-right: 14px;
+    padding: 0.5625rem;
+    margin-right: 0.875rem;
 }
 `
 

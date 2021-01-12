@@ -6,24 +6,24 @@ const ListStyle = styled.div `
     .list-group{
         display:flex;
         flex-wrap: wrap;
-        //padding-left: 12px;
-        //padding-right: 12px;
+        //padding-left: 0.75rem;
+        //padding-right: 0.75rem;
         .item{
             cursor :pointer;
             position: relative;
-            margin: 0px 12px 24px;
-            width: 282px;
+            margin: 0rem 0.75rem 1.5rem;
+            width: 17.625rem;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            border: 1px solid white;
+            border: 0.0625rem solid white;
             justify-content:space-between;
-            padding: 28px 37px;
-            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-            border-radius: 10px;
+            padding: 1.75rem 2.3125rem;
+            box-shadow: 0 0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.16);
+            border-radius: 0.625rem;
             background-color: #ffffff;
             .subjectName{
-                min-width: 219px;
+                min-width: 13.6875rem;
                 display: flex;
                 justify-content:space-between;
                     .button{
@@ -37,19 +37,19 @@ const ListStyle = styled.div `
                     }
                     .button:focus + .overlay{
                         position: absolute;
-                        top: 0px;
-                        left: 20px;
-                        /* top: -59px;
-                        left: -225px; */
+                        top: 0rem;
+                        left: 1.25rem;
+                        /* top: -3.6875rem;
+                        left: -14.0625rem; */
                         display: block;
                         z-index: 100;
                     }
                     .button + .overlay:hover{
                         position: absolute;
-                        top: 0px;
-                        left: 20px;
-                        /* top: -59px;
-                        left: -225px; */
+                        top: 0rem;
+                        left: 1.25rem;
+                        /* top: -3.6875rem;
+                        left: -14.0625rem; */
                         display: block;
                         z-index: 100;     
                     }
@@ -57,28 +57,28 @@ const ListStyle = styled.div `
             .majorBlock{
                 padding: 0.25rem 1rem;
                 padding-top : 0.15rem;
-                border-radius: 13px;
+                border-radius: 0.8125rem;
                 background-color: #fdfbdb;
 
-                font-size: 15px;
+                font-size: 0.9375rem;
                 color: #707070;
             }
             .semesterBlock{
                 padding: 0.25rem 1rem;
                 padding-top : 0.15rem;
-                border-radius: 13px;
+                border-radius: 0.8125rem;
                 background-color: #dbeffd;
 
-                font-size: 15px;
+                font-size: 0.9375rem;
                 color: #707070;
             }
             .typeBlock{
                 padding: 0.25rem 1rem;
                 padding-top : 0.15rem;
-                border-radius: 13px;
+                border-radius: 0.8125rem;
                 background-color: #fddbdb;
 
-                font-size: 15px;
+                font-size: 0.9375rem;
                 color: #707070;
             }
             & > div{
@@ -88,7 +88,7 @@ const ListStyle = styled.div `
                 justify-content: center;
             }
             &> div+div{
-                margin-top: 20px;
+                margin-top: 1.25rem;
             }
             
         }
@@ -98,13 +98,13 @@ const ListStyle = styled.div `
 const PopStyle = styled.div `
     
     position: absolute;
-    top: 59px;
-    left: 225px;
-    width: 107px;
-    height: 85px;
-    //padding: 12px 27px;
-    border-radius: 2px;
-    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.16);
+    top: 3.6875rem;
+    left: 14.0625rem;
+    width: 6.6875rem;
+    height: 5.3125rem;
+    //padding: 0.75rem 1.6875rem;
+    border-radius: 0.125rem;
+    box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.16);
     background-color: #ffffff;
     display:flex;
     flex-direction:column;
@@ -112,8 +112,8 @@ const PopStyle = styled.div `
     justify-content: center;
 
     button{
-        padding: 12px 0px;
-        min-width: 54px;
+        padding: 0.75rem 0rem;
+        min-width: 3.375rem;
         border: none;
         background-color: white;
         display:flex;
@@ -121,7 +121,7 @@ const PopStyle = styled.div `
         justify-content: space-between;
         cursor: pointer;
 
-        font-size: 15px;
+        font-size: 0.9375rem;
         font-weight: bold;
         color: #707070;
     }
@@ -133,12 +133,12 @@ return(
     <PopStyle>
         
         <button onClick={()=>onOpen()} >
-        <img src='/img/Correction.svg' style={{marginRight:"13px"}}/>
+        <img src='/img/Correction.svg' style={{marginRight:"0.8125rem"}}/>
         수정
         </button>
 
         <button onClick={()=>onRemoveSubject(id)}>
-            <img src='/img/Trashbin.svg' style={{marginRight:"13px"}}/>
+            <img src='/img/Trashbin.svg' style={{marginRight:"0.8125rem"}}/>
             삭제
         </button>
     </PopStyle>
@@ -176,7 +176,7 @@ const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSu
                 }
             }}
             style = {focusItem.find((focus)=> focus ===i+1)? 
-                {border:"1px solid #6c63ff"}:{}}
+                {border:"0.0625rem solid #6c63ff"}:{}}
             >
                 <div className="subjectName">
                     <h3>{name}</h3>

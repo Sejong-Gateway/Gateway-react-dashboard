@@ -6,27 +6,31 @@ import UserList from '../components/UserList';
 import SearchBar from '../components/SearchBar';
 import { getUsers, removeUser } from '../api/api';
 
+const PageStyle = styled.div `
+    display:flex;
+`
+
 const UserListPageStyle = styled.div `
     background: #f8f8f8;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
     
 
     .container{
         display: flex;
         flex-direction: column;
-        margin: 74px 64px 0px;
+        margin: 4.625rem 4rem 0rem;
         .header{
-        width:1506px;
+        width:94.125rem;
         display: flex;
         align-items:center;
         justify-content: space-between; 
-        margin-bottom:52px;
+        margin-bottom:3.25rem;
         &>div{
             display: flex;
             h1{
-            margin-right: 50px;
+            margin-right: 3.125rem;
             }
         }
     }
@@ -56,8 +60,9 @@ const UserListPage = (props) =>{
     }
     
     return (
+        <PageStyle>
+        <SideBar/>
         <UserListPageStyle>
-            <SideBar/>
             <div className = "container">
             <div className="header">
                 <div>
@@ -70,6 +75,7 @@ const UserListPage = (props) =>{
             </div>
             
         </UserListPageStyle>
+        </PageStyle>
     )
 }
  
