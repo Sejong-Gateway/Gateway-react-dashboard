@@ -54,12 +54,12 @@ const LogInBlock = styled.div `
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     font-size: 16px;
     font-weight: bold;
     color:white;
     margin-top: 20px;
-   
 `
 
 const LogInPage = () =>{

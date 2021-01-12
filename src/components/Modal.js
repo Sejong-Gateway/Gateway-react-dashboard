@@ -62,13 +62,14 @@ const PlusBlock = styled.div `
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor:pointer;
 
     font-size: 1rem;
     font-weight: bold;
     color:white;
     margin-top: 3.125rem;
 `
-const PlusModal  = ({open, onClose, onChange, onChangeDropdown, onCreateSubject}) =>{
+const Modal  = ({open, onClose, onChange, onChangeDropdown, onCreateSubject, text}) =>{
     if(!open) return null
     return(
         <>
@@ -87,7 +88,7 @@ const PlusModal  = ({open, onClose, onChange, onChangeDropdown, onCreateSubject}
             <h2 style={{marginBottom:'0.4375rem'}}>학점</h2>
             <input placeholder='학점을 입력해주세요' name="credit" onChange={onChange}/>
             <DropDownList onChangeDropdown={onChangeDropdown}/>
-            <PlusBlock onClick={onCreateSubject}>추가하기</PlusBlock>
+            <PlusBlock onClick={onCreateSubject}>{text}</PlusBlock>
             
             </PlusModalStyle>
        </>
@@ -306,4 +307,4 @@ const DropEnteranceYear = ({onChangeDropdown}) =>{
         
     );
 }
-export default PlusModal;
+export default Modal;

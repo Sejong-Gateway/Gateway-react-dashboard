@@ -38,7 +38,7 @@ const UserListPage = (props) =>{
     const [searchValue, setSearchValue]=useState("");
     const [users, setUsers] = useState([]);
     const onChange = (e) =>{
-       setSearchValue(e.target.value);
+        setSearchValue(e.target.value);
     }
 
     useEffect(async()=> {
@@ -48,7 +48,7 @@ const UserListPage = (props) =>{
 
     return (
         <UserListPageStyle>
-            <SideBar user_name = "고윤정"/>
+            <SideBar/>
             <div className = "container">
             <div className="header">
                 <div>

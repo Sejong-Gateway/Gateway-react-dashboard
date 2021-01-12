@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import styled from 'styled-components';
+import Modal from './Modal';
 
 const ListStyle = styled.div `
     .list-group{
@@ -126,10 +127,12 @@ const PopStyle = styled.div `
     }
     
 `
-const CardMenuPop = ({onRemoveSubject, id}) =>{
+const CardMenuPop = ({onOpen, onRemoveSubject, id}) =>{
+    // onClick={()=>onOpen(true)} 
 return(
     <PopStyle>
-        <button>
+        
+        <button onClick={()=>onOpen()} >
         <img src='/img/Correction.svg' style={{marginRight:"13px"}}/>
         수정
         </button>
@@ -142,13 +145,28 @@ return(
 );
 }
 
-const SubjectList = ({subjects, semester = '', onRemoveSubject})=>{
+const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSubject, searchValue})=>{
     const [focusItem, setFocusItem] = useState([]);
-    console.log(subjects, semester);
-    const subjectList = subjects && subjects.filter((s) => {
-        if ( s.semester === semester ||  semester === '전체' ){
+
+    //modal
+    const [isOpen, setIsOpen]=useState(false);
+    const onOpen = () => setIsOpen(true);
+
+    const subjectList = subjects && subjects.filter((s)=>{
+        // if(s.name.indexOf(searchValue) !== -1){
+        //     return s;
+        // }
+        if ( (s.semester === semester ||  semester === '전체')
+        && (s.major===major || major === '전체')
+        && (s.type===type || type === '전체')){
             return s;
         }
+        // else if(s.major===major || major === '전체'){
+        //     return s.major;
+        // }
+        // if(s.type===type || type === '전체'){
+        //     return s.type;
+        // }
     }).map((subject,i)=>{
         const {name,major,semester,type, _id} = subject;
         return(
@@ -169,7 +187,8 @@ const SubjectList = ({subjects, semester = '', onRemoveSubject})=>{
                     <img src='/img/CardMenu.svg'/>
                     </button>
                     <div className ="overlay">
-                        <CardMenuPop onRemoveSubject={onRemoveSubject} id={_id}/>
+                        <CardMenuPop onOpen={onOpen} onRemoveSubject={onRemoveSubject} id={_id}/>
+                        
                     </div>
                 </div>
                 <div className="majorBlock">
@@ -191,6 +210,7 @@ const SubjectList = ({subjects, semester = '', onRemoveSubject})=>{
             <div className = "list-group">
                 {subjectList}
             </div>
+            <Modal text="수정하기" open={isOpen}  onClose={()=>setIsOpen(false)}/>
         </ListStyle>
 
     )
