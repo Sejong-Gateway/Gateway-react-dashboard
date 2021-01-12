@@ -87,28 +87,30 @@ const ListStyle = styled.div `
 `
 
 
-const UserList = ({searchValue, users})=>{
-    const [focusItem, setFocusItem] = useState([]);
-    const onListCheck = useRef();
+const UserList = ({searchValue, users, focusItem, setFocusItem})=>{
+    console.log(focusItem);
+    const onListCheck = useRef([]);
     const userList = users.filter(user => user.admin===false && user.studentId.indexOf(searchValue) !== -1).map((user, i)=>{
         const {studentId, major,semester,createdAt} = user;
         return(
             <div className="item" 
-            style = {focusItem.find((focus)=> focus ===i+1)? 
+            key={i}
+            style = {focusItem && focusItem.find((focus) => focus === user._id)? 
             {border:"1px solid #6c63ff"}:{}}>
                 <div className = "checkbox-container">
                     <input id={"a"+i} type="checkbox"
+                    ref={el => onListCheck.current[i] = el} 
                     onChange = {(e)=>{
                         if(e.target.checked===false){
-                            setFocusItem([...focusItem.filter((focus)=> focus !== i+1)]);
+                            setFocusItem([...focusItem.filter((focus)=> focus !== user._id )]);
                         }
                         else{
-                            setFocusItem([...focusItem,i+1]);
+                            setFocusItem([...focusItem, user._id]);
                         }
                     }}
                     //ref = {onListCheck} //useref
                     />
-                    <label ref = {onListCheck} htmlFor = {"a"+i}></label>
+                    <label htmlFor = {"a"+i}></label>
                     
                 </div>
                 <div>
@@ -133,13 +135,16 @@ const UserList = ({searchValue, users})=>{
                 <input id='a' type="checkbox"
                 onChange={(e)=>{
                     if(e.target.checked===true){
-                        setFocusItem([...Array(users.length+1).keys()]);
-                        // onListCheck.current()
-                        // console.log(onListCheck.current);
-                        
+                        setFocusItem([...users.map(u => u._id)]);
+                        onListCheck.current.forEach((v, i) => {
+                            onListCheck.current[i].checked = true;    
+                        });
                     }
                     else{
                         setFocusItem([]);
+                        onListCheck.current.forEach((v, i) => {
+                            onListCheck.current[i].checked = false;    
+                        });
                     }
                 }}
                 />

@@ -59,7 +59,7 @@ const DropSemester = ({onChange}) =>{
     ]
     return(
         <DropdownBoxStyle>
-            <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChange} />
+            <Dropdown placeholder='전체' name='semester' search selection options={stateOptions} onChange={onChange} />
         </DropdownBoxStyle>
         
     );
@@ -89,7 +89,7 @@ const DropMajor = ({onChange}) =>{
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChange}/>
+        <Dropdown placeholder='전체' name='major' search selection options={stateOptions} onChange={onChange}/>
         </DropdownBoxStyle>
         
     );
@@ -127,11 +127,6 @@ const DropType = ({onChange}) =>{
             value: "교선2"
         },
         {
-            key: 7,
-            text:"공학",
-            value: "공학"
-        },
-        {
             key: 8,
             text:"기교",
             value: "전공기초교양"
@@ -139,7 +134,7 @@ const DropType = ({onChange}) =>{
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChange}/>
+        <Dropdown placeholder='전체' name='type' search selection options={stateOptions} onChange={onChange}/>
         </DropdownBoxStyle>
         
     );

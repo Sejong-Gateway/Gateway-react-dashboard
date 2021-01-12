@@ -79,14 +79,18 @@ const SubjectPage = (props) =>{
 
 
     //DropDownBox 
-    const [semester, setSemester] = useState();
-    const [major, setMajor] = useState();
-    const [type, setType] = useState();
 
-    const onChange = (e, {value}) => {
-        setSemester(value);
-        setMajor(value);
-        setType(value);
+    const [dropFilter, setDropFilter] = useState({
+        semester : "",
+        major: "",
+        type: "",
+    });
+
+    const onChange = (e, {value, name}) => {
+        setDropFilter({
+            ...dropFilter,
+            [name] : value,
+        })
     }
     const onChangeDropdown = (e, {name , value}) => {
         setInput({
@@ -143,7 +147,7 @@ const SubjectPage = (props) =>{
             <DropDownBox onChange={onChange}/>
             </div>
             <SubjectList subjects={subjects} 
-            semester={semester} major={major} type={type}
+            semester={dropFilter.semester} major={dropFilter.major} type={dropFilter.type}
             onRemoveSubject={onRemoveSubject} searchValue={searchValue}/>
             </div>
         </SubjectStyle>
