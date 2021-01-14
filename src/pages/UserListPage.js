@@ -49,9 +49,13 @@ const UserListPage = (props) =>{
         setUsers(res.data.data);
     }, []);
     const deleteUsers = async() => {
-        focusItem.map(async(_id)=>{
-            await removeUser(_id);
-        });
+        let isDelete = window.confirm('정말 지우려고..??');
+        if ( isDelete ){
+            focusItem.map(async(_id)=>{
+                await removeUser(_id);
+            });
+        }
+    
         // reduce, Promise all, 비동기 배열 처리
         // const res = await getUsers();
     }
