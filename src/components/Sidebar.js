@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled,{css} from 'styled-components';
 import SideBarClick from './SideBarClick';
 
@@ -49,7 +50,11 @@ const Sidebarblock = styled.div`
 
 
 const SideBar = ({ user_name}) => {
- 
+  const history = useHistory();
+  const onClickLogout = () => {
+    sessionStorage.clear();
+    history.push('/');
+  }
   return (
     <Sidebarblock>
       <div className = "top">
@@ -65,7 +70,7 @@ const SideBar = ({ user_name}) => {
       </div>
       
       <div className = "bottom">
-      <img src='/img/Logout.svg'/>
+      <img src='/img/Logout.svg' onClick={onClickLogout}/>
         로그아웃
       </div>
     </Sidebarblock>

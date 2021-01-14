@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { login } from '../api/api';
+import {Redirect} from 'react-router-dom';
 
 
 const LogInPageStyle = styled.div `
@@ -84,6 +85,11 @@ const LogInPage = () =>{
         });
         
     }
+
+    if ( sessionStorage.getItem('token') ){
+        return <Redirect to='/user'></Redirect>
+    }
+
     return (
         <>
         <LogInPageStyle>

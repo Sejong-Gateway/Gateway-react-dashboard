@@ -69,7 +69,7 @@ const PlusBlock = styled.div `
     color:white;
     margin-top: 3.125rem;
 `
-const Modal  = ({open, onClose, onChange, onChangeDropdown, onCreateSubject, text}) =>{
+const Modal  = ({open, onClose, onChange, onChangeDropdown, onCreateSubject, text, active, isCreate, onUpdateSubject}) =>{
     if(!open) return null
     return(
         <>
@@ -82,13 +82,13 @@ const Modal  = ({open, onClose, onChange, onChangeDropdown, onCreateSubject, tex
             onClick={onClose}>
             <img src='/img/ModalExit.svg'/>
             </button>
-            <h1>과목 추가</h1>
+            <h1>과목 {isCreate ? "추가" : "수정"}</h1>
             <h2 style={{marginBottom:'0.4375rem'}}>과목 이름</h2>
-            <input placeholder='과목 이름을 입력해주세요' name="name" onChange={onChange} />
+            <input placeholder='과목 이름을 입력해주세요' name="name" onChange={onChange} defaultValue={isCreate ? "" : active.name} />
             <h2 style={{marginBottom:'0.4375rem'}}>학점</h2>
-            <input placeholder='학점을 입력해주세요' name="credit" onChange={onChange}/>
-            <DropDownList onChangeDropdown={onChangeDropdown}/>
-            <PlusBlock onClick={onCreateSubject}>{text}</PlusBlock>
+            <input placeholder='학점을 입력해주세요' name="credit" onChange={onChange} defaultValue={isCreate ? "" : active.credit}/>
+            <DropDownList onChangeDropdown={onChangeDropdown} active={active}/>
+            <PlusBlock onClick={isCreate ? onCreateSubject : () => onUpdateSubject(active._id)}>{text}</PlusBlock>
             
             </PlusModalStyle>
        </>
@@ -109,18 +109,18 @@ const DropDownListStyle = styled.div `
         }
     }
 `
-const DropDownList = ({onChangeDropdown}) =>{
+const DropDownList = ({onChangeDropdown, active}) =>{
     return(
         <DropDownListStyle>
         <div className="dropContainer">
         <div className="drop">
         <h2>학년</h2>
-        <DropSemester onChangeDropdown={onChangeDropdown}/>
+        <DropSemester onChangeDropdown={onChangeDropdown} defaultValue={active.semester ?? ""}/>
         </div>
         
         <div className="drop">
         <h2>학과</h2>
-        <DropMajor onChangeDropdown={onChangeDropdown}/>
+        <DropMajor onChangeDropdown={onChangeDropdown} defaultValue={active.major ?? ""}/>
         </div>
         </div>
 
@@ -128,11 +128,11 @@ const DropDownList = ({onChangeDropdown}) =>{
         style={{marginTop:'2.0625rem'}}>
         <div className="drop">
         <h2>이수 구분</h2>
-        <DropType onChangeDropdown={onChangeDropdown}/>
+        <DropType onChangeDropdown={onChangeDropdown} defaultValue={active.type ?? ""}/>
         </div>
         <div className="drop">
         <h2>학년도</h2>
-        <DropEnteranceYear onChangeDropdown={onChangeDropdown}/>
+        <DropEnteranceYear onChangeDropdown={onChangeDropdown} defaultValue={active.enteranceYear ?? ""}/>
         </div>
         
         </div>
@@ -147,7 +147,7 @@ const DropdownBoxStyle = styled.div `
     }
 `  
 
-const DropSemester = ({onChangeDropdown}) =>{
+const DropSemester = ({onChangeDropdown, defaultValue}) =>{
     const stateOptions = [
         {
             key: 1,
@@ -197,12 +197,12 @@ const DropSemester = ({onChangeDropdown}) =>{
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChangeDropdown} name='semester' />
+        <Dropdown placeholder='전체' defaultValue={defaultValue} search selection options={stateOptions} onChange={onChangeDropdown} name='semester' />
         </DropdownBoxStyle>
         
     );
 }
-const DropMajor = ({onChangeDropdown}) =>{
+const DropMajor = ({onChangeDropdown, defaultValue}) =>{
     const stateOptions = [
         {
             key: 1,
@@ -212,27 +212,27 @@ const DropMajor = ({onChangeDropdown}) =>{
         {
             key: 2,
             text: "디자인이노베이션",
-            value: "디자인이노베이션"
+            value: "디자인이노베이션학과"
         },
         {
             key: 3,
             text:"소프트웨어",
-            value: "소프트웨어"
+            value: "소프트웨어학과"
         },
         {
             key: 4,
             text:"컴퓨터공학",
-            value: "컴퓨터공학"
+            value: "컴퓨터공학과"
         }
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChangeDropdown} name='major'/>
+        <Dropdown defaultValue={defaultValue} placeholder='전체' search selection options={stateOptions} onChange={onChangeDropdown} name='major'/>
         </DropdownBoxStyle>
         
     );
 }
-const DropType = ({onChangeDropdown}) =>{
+const DropType = ({onChangeDropdown, defaultValue}) =>{
     const stateOptions = [
         {
             key: 1,
@@ -242,22 +242,22 @@ const DropType = ({onChangeDropdown}) =>{
         {
             key: 2,
             text: "전필",
-            value: "전필"
+            value: "전공필수"
         },
         {
             key: 3,
             text:"전선",
-            value: "전선"
+            value: "전공선택"
         },
         {
             key: 4,
             text:"교필",
-            value: "교필"
+            value: "교양필수"
         },
         {
             key: 5,
             text:"교선1",
-            value: "교선1"
+            value: "교양선택1"
         },
         {
             key: 6,
@@ -272,12 +272,12 @@ const DropType = ({onChangeDropdown}) =>{
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChangeDropdown} name="type" />
+        <Dropdown placeholder='전체' defaultValue={defaultValue} search selection options={stateOptions} onChange={onChangeDropdown} name="type" />
         </DropdownBoxStyle>
         
     );
 }
-const DropEnteranceYear = ({onChangeDropdown}) =>{
+const DropEnteranceYear = ({onChangeDropdown, defaultValue}) =>{
     const stateOptions = [
         {
             key: 1,
@@ -302,7 +302,7 @@ const DropEnteranceYear = ({onChangeDropdown}) =>{
     ]
     return(
         <DropdownBoxStyle>
-        <Dropdown placeholder='전체' search selection options={stateOptions} onChange={onChangeDropdown} name="enteranceYear"/>
+        <Dropdown placeholder='전체' defaultValue={defaultValue} search selection options={stateOptions} onChange={onChangeDropdown} name="enteranceYear"/>
         </DropdownBoxStyle>
         
     );

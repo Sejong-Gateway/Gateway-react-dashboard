@@ -128,18 +128,17 @@ const PopStyle = styled.div `
     }
     
 `
+
 const CardMenuPop = ({onOpen, onRemoveSubject, id}) =>{
     // onClick={()=>onOpen(true)} 
 return(
     <PopStyle>
-        
-        <button onClick={()=>onOpen()} >
+        <button onClick={()=>onOpen(id)} >
         <img src='/img/Correction.svg' style={{marginRight:"0.8125rem"}}/>
-        수정
+            수정
         </button>
 
         <button onClick={()=>onRemoveSubject(id)}>
-            
             <img src='/img/Trashbin.svg' style={{marginRight:"0.8125rem"}}/>
             삭제
         </button>
@@ -147,17 +146,33 @@ return(
 );
 }
 
-const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSubject, searchValue})=>{
-    const [focusItem, setFocusItem] = useState([]);
-
+const SubjectList = ({subjects, semester = '', major = '', type = '', setInput,  onRemoveSubject, searchValue, onUpdateSubject, onChange, onChangeDropdown, focusItem, setFocusItem})=>{
+    
+    const [active, setActive] = useState();
     //modal
     const [isOpen, setIsOpen]=useState(false);
-    const onOpen = () => setIsOpen(true);
+    const onOpen = (id) => {
+        const subject = subjects.find(subject => subject._id === id)
+        setActive(subject);
+        setInput({
+            name : subject.name,
+            major: subject.major,
+            semester: subject.semester,
+            enteranceYear: subject.enteranceYear,
+            credit: subject.credit,
+            type: subject.type,
+        })
+        setIsOpen(true);
+    }
+
+    const handleUpdateSubject = (id) => {
+        setIsOpen(false);
+        onUpdateSubject(id);
+    }
 
     const subjectList = subjects && subjects.filter((s)=>{
         
         if(s.name.indexOf(searchValue) !== -1){
-            console.log(major);
             if(s.semester === semester || semester === '전체' || !semester ){ 
                 if ( s.major === major  || major === '전체' || major === '' ){
                     if ( s.type === type  || type === '전체' || type === '' ){
@@ -170,14 +185,17 @@ const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSu
         const {name,major,semester,type, _id} = subject;
         return(
             <div className="item" id={"a"+i} onClick ={(e)=>{
-                if(focusItem.find(f => f === i + 1)){
-                    setFocusItem([...focusItem.filter((focus)=> focus !== i+1)]);
-                }
-                else{
-                    setFocusItem([...focusItem,i+1]);
+                console.log(focusItem);
+                if( focusItem ){
+                    if( focusItem.find(f => f === _id)){
+                        setFocusItem([...focusItem.filter((focus)=> focus !== _id)]);
+                    }
+                    else{
+                        setFocusItem([...focusItem, _id]);
+                    }
                 }
             }}
-            style = {focusItem.find((focus)=> focus ===i+1)? 
+            style = {focusItem && focusItem.find((focus)=> focus === _id)? 
                 {border:"0.0625rem solid #6c63ff"}:{}}
             >
                 <div className="subjectName">
@@ -187,7 +205,6 @@ const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSu
                     </button>
                     <div className ="overlay">
                         <CardMenuPop onOpen={onOpen} onRemoveSubject={onRemoveSubject} id={_id}/>
-                        
                     </div>
                 </div>
                 <div className="majorBlock">
@@ -209,7 +226,7 @@ const SubjectList = ({subjects, semester = '', major = '', type = '', onRemoveSu
             <div className = "list-group">
                 {subjectList}
             </div>
-            <Modal text="수정하기" open={isOpen}  onClose={()=>setIsOpen(false)}/>
+            <Modal text="수정하기" isCreate={false}  active={active} open={isOpen}  onClose={()=>setIsOpen(false)} onUpdateSubject={handleUpdateSubject} onChange={onChange} onChangeDropdown={onChangeDropdown} />
         </ListStyle>
 
     )
