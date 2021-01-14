@@ -39,8 +39,6 @@ const ListStyle = styled.div `
                         position: absolute;
                         top: 0rem;
                         left: 1.25rem;
-                        /* top: -3.6875rem;
-                        left: -14.0625rem; */
                         display: block;
                         z-index: 100;
                     }
@@ -48,8 +46,6 @@ const ListStyle = styled.div `
                         position: absolute;
                         top: 0rem;
                         left: 1.25rem;
-                        /* top: -3.6875rem;
-                        left: -14.0625rem; */
                         display: block;
                         z-index: 100;     
                     }
@@ -102,7 +98,6 @@ const PopStyle = styled.div `
     left: 14.0625rem;
     width: 6.6875rem;
     height: 5.3125rem;
-    //padding: 0.75rem 1.6875rem;
     border-radius: 0.125rem;
     box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.16);
     background-color: #ffffff;
@@ -130,7 +125,7 @@ const PopStyle = styled.div `
 `
 
 const CardMenuPop = ({onOpen, onRemoveSubject, id}) =>{
-    // onClick={()=>onOpen(true)} 
+    
 return(
     <PopStyle>
         <button onClick={()=>onOpen(id)} >

@@ -1,8 +1,9 @@
-import React,{useState, useRef} from 'react';
+import React,{useRef} from 'react';
 import styled from 'styled-components';
 
 
 const ListStyle = styled.div `
+    margin-top: 6.625rem;
 .list-name{
     .checkbox-container{
         width: 1.3125rem;
@@ -68,7 +69,6 @@ const ListStyle = styled.div `
         padding: 1.625rem 2.3125rem;
         border-radius: 0.25rem;
         box-shadow: 0 0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.16);
-        //border: solid 0.125rem #6c63ff; (click)
         background-color: #ffffff;
         /*font*/
         font-size: 1.1875rem;
@@ -108,7 +108,6 @@ const UserList = ({searchValue, users, focusItem, setFocusItem})=>{
                             setFocusItem([...focusItem, user._id]);
                         }
                     }}
-                    //ref = {onListCheck} //useref
                     />
                     <label htmlFor = {"a"+i}></label>
                     

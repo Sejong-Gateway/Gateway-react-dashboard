@@ -17,17 +17,20 @@ const UserListPageStyle = styled.div `
     .container{
         display: flex;
         flex-direction: column;
-        margin: 74px 64px 0px;
+        margin: 4.625rem 4rem 0rem;
         .header{
-        width:1506px;
+        background: #f8f8f8;
+        position: fixed;
+        z-index: 1000;
+        width:94.125rem;
+        height: 6.25rem;
         display: flex;
         align-items:center;
         justify-content: space-between; 
-        margin-bottom:52px;
         &>div{
             display: flex;
             h1{
-            margin-right: 50px;
+            margin-right: 3.125rem;
             }
         }
     }
