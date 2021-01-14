@@ -6,7 +6,8 @@ import Button from '../components/Button';
 import DropDownBox from '../components/DropDownBox';
 import SubjectList from '../components/SubjectList';
 import Modal from '../components/Modal';
-import { createSubject, getSubjects, removeSubject } from '../api/api';
+import { createSubject, getSubjects, removeSubject, updateSubject } from '../api/api';
+import { Redirect } from 'react-router-dom';
 
 const PageStyle = styled.div `
     display:flex;
@@ -23,6 +24,9 @@ const SubjectStyle = styled.div `
         flex-direction: column;
         margin: 4.625rem 4rem 0rem;
         .header{
+        background: white;
+        position: fixed;
+        z-index: 1000;
         width:94.125rem;
         display: flex;
         align-items:center;
@@ -49,6 +53,7 @@ const SubjectStyle = styled.div `
         }
     }
     .subheader{
+        margin-top: 100px;
         display: flex;
         align-items:center;
         margin-bottom: 1.9375rem;
@@ -60,6 +65,7 @@ const SubjectStyle = styled.div `
 const SubjectPage = (props) =>{
     //searchBar 검색기능
     const [searchValue, setSearchValue]=useState("");
+    const [focusItem, setFocusItem] = useState([]);
     const onChangeSearch = (e) =>{
         setSearchValue(e.target.value);
      }
@@ -73,7 +79,13 @@ const SubjectPage = (props) =>{
         semester: "",
         credit : "",
         enteranceYear : ""
-    })
+    });
+
+    const onUpdateSubject = async(id) => {
+        await updateSubject(input, id);
+        const res = await getSubjects();
+        setSubjects(res.data.data);
+    }
     //
     const [subjects, setSubjects] = useState();
     useEffect(async()=> {
@@ -117,9 +129,22 @@ const SubjectPage = (props) =>{
     
     //과목 삭제
     const onRemoveSubject = async(id) => {
-        await removeSubject(id);
-        const res = await getSubjects();
-        setSubjects(res.data.data);
+        let isDelete = window.confirm('정말 지우려고..??');
+        if ( isDelete ){
+            await removeSubject(id);
+            const res = await getSubjects();
+            setSubjects(res.data.data);
+        }
+        
+    }
+
+    const onRemoveAllSubject = async() => {
+        let isDelete = window.confirm('정말 지우려고..??');
+        if ( isDelete){
+            focusItem.map(async(_id)=>{
+                await removeSubject(_id);
+            });
+        }
     }
     //button 수정
     const onCreateSubject = async() => {
@@ -127,6 +152,10 @@ const SubjectPage = (props) =>{
         const res = await getSubjects();
         setSubjects(res.data.data);
         setIsOpen(false);
+    }
+
+    if ( !sessionStorage.getItem('token') ){
+        return <Redirect to='/'></Redirect>
     }
 
     return (
@@ -140,12 +169,13 @@ const SubjectPage = (props) =>{
         
                 <div className="button-group">
                     <Button onClick={()=>setIsOpen(true)}>추가</Button>
-                    <Button primary>삭제</Button>
+                    <Button primary onClick={onRemoveAllSubject}>삭제</Button>
                 </div>
 
                 <Modal text = "추가하기" open={isOpen}
                     onCreateSubject={onCreateSubject}
-                    onClose={()=>setIsOpen(false)} onChange={onChangeInput} onChangeDropdown={onChangeDropdown}/>
+                    isCreate={true}
+                    onClose={()=>setIsOpen(false)} onChange={onChangeInput} onChangeDropdown={onChangeDropdown} />
             </div>
 
             <div className = "subheader">
@@ -154,7 +184,10 @@ const SubjectPage = (props) =>{
             </div>
             <SubjectList subjects={subjects} 
             semester={dropFilter.semester} major={dropFilter.major} type={dropFilter.type}
-            onRemoveSubject={onRemoveSubject} searchValue={searchValue}/>
+            onRemoveSubject={onRemoveSubject} searchValue={searchValue} setInput={setInput} onUpdateSubject={onUpdateSubject}
+            onChange={onChangeInput} onChangeDropdown={onChangeDropdown} 
+            focusItem={focusItem} setFocusItem={setFocusItem}
+            />
             </div>
         </SubjectStyle>
         </PageStyle>

@@ -4,33 +4,30 @@ import Button from '../components/Button';
 import SideBar from '../components/SideBar';
 import UserList from '../components/UserList';
 import SearchBar from '../components/SearchBar';
+import {Redirect} from 'react-router-dom';
 import { getUsers, removeUser } from '../api/api';
-
-const PageStyle = styled.div `
-    display:flex;
-`
 
 const UserListPageStyle = styled.div `
     background: #f8f8f8;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     display: flex;
     
 
     .container{
         display: flex;
         flex-direction: column;
-        margin: 4.625rem 4rem 0rem;
+        margin: 74px 64px 0px;
         .header{
-        width:94.125rem;
+        width:1506px;
         display: flex;
         align-items:center;
         justify-content: space-between; 
-        margin-bottom:3.25rem;
+        margin-bottom:52px;
         &>div{
             display: flex;
             h1{
-            margin-right: 3.125rem;
+            margin-right: 50px;
             }
         }
     }
@@ -52,17 +49,24 @@ const UserListPage = (props) =>{
         setUsers(res.data.data);
     }, []);
     const deleteUsers = async() => {
-        focusItem.map(async(_id, i)=>{
-            await removeUser(_id);
-        });
+        let isDelete = window.confirm('정말 지우려고..??');
+        if ( isDelete ){
+            focusItem.map(async(_id)=>{
+                await removeUser(_id);
+            });
+        }
+    
         // reduce, Promise all, 비동기 배열 처리
         // const res = await getUsers();
     }
+
+    if ( !sessionStorage.getItem('token') ){
+        return <Redirect to='/'></Redirect>
+    }
     
     return (
-        <PageStyle>
-        <SideBar/>
         <UserListPageStyle>
+            <SideBar/>
             <div className = "container">
             <div className="header">
                 <div>
@@ -75,7 +79,6 @@ const UserListPage = (props) =>{
             </div>
             
         </UserListPageStyle>
-        </PageStyle>
     )
 }
  
