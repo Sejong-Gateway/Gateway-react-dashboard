@@ -24,7 +24,7 @@ const PlusModalStyle = styled.div `
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width:540px;
+    width:33.75rem;
     padding: 2.0625rem 5.375rem 3.5625rem;
     border-radius: 0.625rem;
     background-color: #ffffff;

@@ -138,6 +138,7 @@ return(
         </button>
 
         <button onClick={()=>onRemoveSubject(id)}>
+            
             <img src='/img/Trashbin.svg' style={{marginRight:"0.8125rem"}}/>
             삭제
         </button>

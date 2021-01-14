@@ -126,6 +126,7 @@ const SubjectPage = (props) =>{
         await createSubject(input);
         const res = await getSubjects();
         setSubjects(res.data.data);
+        setIsOpen(false);
     }
 
     return (
