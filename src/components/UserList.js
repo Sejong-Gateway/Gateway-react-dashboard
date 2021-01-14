@@ -5,73 +5,73 @@ import styled from 'styled-components';
 const ListStyle = styled.div `
 .list-name{
     .checkbox-container{
-        width: 21px;
+        width: 1.3125rem;
                 input{
                     display:none;
                 }
                 input:checked + label{
                     background: url(${'/img/Check.svg'}) no-repeat center center;
-                    border: 1px solid #6c63ff;
-                    width: 17px;
-                    height: 17px;
+                    border: 0.0625rem solid #6c63ff;
+                    width: 1.0625rem;
+                    height: 1.0625rem;
                 }
                 input + label {
-                    border-radius: 2px;
+                    border-radius: 0.125rem;
                     display: inline-block;
-                    width: 17px;
-                    height: 17px;
-                    border: 1px solid #707070;
+                    width: 1.0625rem;
+                    height: 1.0625rem;
+                    border: 0.0625rem solid #707070;
                 }
     }
-    width: 1506px;
+    width: 94.125rem;
     display:flex;
     align-items: center;
     justify-content: space-between;
-    padding: 26px 37px;
+    padding: 1.625rem 2.3125rem;
     h3{
         flex:1;
         font-weight: normal;
         display:flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 14px;
+        margin-bottom: 0.875rem;
     }
 }
 .list-group{
-    margin-bottom:8px;
+    margin-bottom:0.5rem;
     .item{
         .checkbox-container{
-                width: 21px;
+                width: 1.3125rem;
                 input{
                     display:none;
                 }
                 input:checked + label{
                     background: url(${'/img/Check.svg'}) no-repeat center center;
-                    border: 1px solid #6c63ff;
-                    width: 17px;
-                    height: 17px;
+                    border: 0.0625rem solid #6c63ff;
+                    width: 1.0625rem;
+                    height: 1.0625rem;
                 }
                 input + label {
-                    border-radius: 2px;
+                    border-radius: 0.125rem;
                     display: inline-block;
-                    width: 17px;
-                    height: 17px;
-                    border: 1px solid #707070;
+                    width: 1.0625rem;
+                    height: 1.0625rem;
+                    border: 0.0625rem solid #707070;
                 }
             }
         display:flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 8px;
-        width: 1506px;
-        height: 75px;
-        padding: 26px 37px;
-        border-radius: 4px;
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-        //border: solid 2px #6c63ff; (click)
+        margin-bottom: 0.5rem;
+        width: 94.125rem;
+        height: 4.6875rem;
+        padding: 1.625rem 2.3125rem;
+        border-radius: 0.25rem;
+        box-shadow: 0 0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.16);
+        //border: solid 0.125rem #6c63ff; (click)
         background-color: #ffffff;
         /*font*/
-        font-size: 19px;
+        font-size: 1.1875rem;
         font-family: HelveticaNeue;
         color: #707070;
         
@@ -96,7 +96,7 @@ const UserList = ({searchValue, users, focusItem, setFocusItem})=>{
             <div className="item" 
             key={i}
             style = {focusItem && focusItem.find((focus) => focus === user._id)? 
-            {border:"1px solid #6c63ff"}:{}}>
+            {border:"0.0625rem solid #6c63ff"}:{}}>
                 <div className = "checkbox-container">
                     <input id={"a"+i} type="checkbox"
                     ref={el => onListCheck.current[i] = el} 

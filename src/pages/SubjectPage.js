@@ -8,27 +8,31 @@ import SubjectList from '../components/SubjectList';
 import Modal from '../components/Modal';
 import { createSubject, getSubjects, removeSubject } from '../api/api';
 
+const PageStyle = styled.div `
+    display:flex;
+`
+
 const SubjectStyle = styled.div `
     background: #f8f8f8;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
 
     .container{
         display: flex;
         flex-direction: column;
-        margin: 74px 64px 0px;
+        margin: 4.625rem 4rem 0rem;
         .header{
-        width:1506px;
+        width:94.125rem;
         display: flex;
         align-items:center;
         justify-content: space-between;
-        margin-bottom:52px;
-        margin-left: 12px;
+        margin-bottom:3.25rem;
+        margin-left: 0.75rem;
         &>div{
             display: flex;
             h1{
-                margin-right: 50px;
+                margin-right: 3.125rem;
             }
         }
         .button-group{
@@ -47,8 +51,8 @@ const SubjectStyle = styled.div `
     .subheader{
         display: flex;
         align-items:center;
-        margin-bottom: 31px;
-        margin-left: 12px;
+        margin-bottom: 1.9375rem;
+        margin-left: 0.75rem;
         
     }
 }
@@ -122,11 +126,13 @@ const SubjectPage = (props) =>{
         await createSubject(input);
         const res = await getSubjects();
         setSubjects(res.data.data);
+        setIsOpen(false);
     }
 
     return (
+        <PageStyle>
+        <SideBar/>
         <SubjectStyle>
-            <SideBar/>
             <div className = "container">
             
             <div className = "header">
@@ -143,7 +149,7 @@ const SubjectPage = (props) =>{
             </div>
 
             <div className = "subheader">
-            <SearchBar text ="과목명" style={{marginRight:'47px'}}  onChange={onChangeSearch}/>
+            <SearchBar text ="과목명" style={{marginRight:'2.9375rem'}}  onChange={onChangeSearch}/>
             <DropDownBox onChange={onChange}/>
             </div>
             <SubjectList subjects={subjects} 
@@ -151,6 +157,7 @@ const SubjectPage = (props) =>{
             onRemoveSubject={onRemoveSubject} searchValue={searchValue}/>
             </div>
         </SubjectStyle>
+        </PageStyle>
     )
 }
 
