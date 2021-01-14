@@ -8,7 +8,7 @@ const Sidebarblock = styled.div`
     min-width: 19.375rem;
     height: 100vh;
     //padding: 6.25rem 4.9375rem 3.25rem 0;
-    
+    //box-shadow: 0 0.1875rem 0 0 rgba(0, 0, 0, 0.16);
     background-color: #ffffff;
     display: flex;
     flex-direction: column;

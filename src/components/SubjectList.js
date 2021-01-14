@@ -112,6 +112,7 @@ const PopStyle = styled.div `
     justify-content: center;
 
     button{
+        outline: none;
         padding: 0.75rem 0rem;
         min-width: 3.375rem;
         border: none;
