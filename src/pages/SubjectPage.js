@@ -24,10 +24,11 @@ const SubjectStyle = styled.div `
         flex-direction: column;
         margin: 4.625rem 4rem 0rem;
         .header{
-        background: white;
+        background: #f8f8f8;
         position: fixed;
         z-index: 1000;
         width:94.125rem;
+        height: 6.25rem;
         display: flex;
         align-items:center;
         justify-content: space-between;
@@ -53,7 +54,7 @@ const SubjectStyle = styled.div `
         }
     }
     .subheader{
-        margin-top: 100px;
+        margin-top: 6.25rem;
         display: flex;
         align-items:center;
         margin-bottom: 1.9375rem;
