@@ -90,7 +90,7 @@ const ListStyle = styled.div `
 const UserList = ({searchValue, users, focusItem, setFocusItem})=>{
     console.log(focusItem);
     const onListCheck = useRef([]);
-    const userList = users.filter(user => user.admin===false && user.studentId.indexOf(searchValue) !== -1).map((user, i)=>{
+    const userList = users.filter(user => user && user.admin===false && user.studentId.indexOf(searchValue) !== -1).map((user, i)=>{
         const {studentId, major,semester,createdAt} = user;
         return(
             <div className="item" 
